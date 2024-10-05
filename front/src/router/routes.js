@@ -5,7 +5,7 @@ const routes = [
     children: [
       {
         path: "", // Página inicial
-        component: () => import("pages/IndexPage.vue"),
+        component: () => import("pages/DashBoardPage.vue"),
       },
       {
         path: "login", // Rota de login
