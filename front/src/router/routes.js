@@ -1,18 +1,28 @@
 const routes = [
   {
-    path: '/',
-    component: () => import('layouts/MainLayout.vue'),
+    path: "/",
+    component: () => import("layouts/MainLayout.vue"),
     children: [
-      { path: '', component: () => import('pages/IndexPage.vue') }
-    ]
+      {
+        path: "", // Página inicial
+        component: () => import("pages/IndexPage.vue"),
+      },
+      {
+        path: "login", // Rota de login
+        component: () => import("pages/LoginPage.vue"),
+      },
+      {
+        path: "register", // Rota de registro
+        component: () => import("pages/RegisterPage.vue"),
+      },
+    ],
   },
 
-  // Always leave this as last one,
-  // but you can also remove it
+  // Rota para páginas não encontradas
   {
-    path: '/:catchAll(.*)*',
-    component: () => import('pages/ErrorNotFound.vue')
-  }
-]
+    path: "/:catchAll(.*)*",
+    component: () => import("pages/ErrorNotFound.vue"),
+  },
+];
 
-export default routes
+export default routes;
