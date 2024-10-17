@@ -1,37 +1,6 @@
 <template>
   <q-page class="q-pa-md">
     <q-layout view="lHh Lpr lFf">
-      <!-- Menu lateral -->
-      <q-drawer show-if-above side="left" bordered class="custom-drawer">
-        <q-list>
-          <q-item-label header>Menu</q-item-label>
-          <q-item clickable v-ripple tag="a" href="#">
-            <q-item-section>Listagem</q-item-section>
-          </q-item>
-          <q-item clickable v-ripple tag="a" href="#">
-            <q-item-section>Dashboard</q-item-section>
-          </q-item>
-          <q-item clickable v-ripple tag="a" href="#">
-            <q-item-section>Agente</q-item-section>
-          </q-item>
-          <q-item clickable v-ripple tag="a" href="#">
-            <q-item-section>Camp</q-item-section>
-          </q-item>
-          <q-item clickable v-ripple tag="a" href="#">
-            <q-item-section>Estat</q-item-section>
-          </q-item>
-          <q-item clickable v-ripple tag="a" href="#">
-            <q-item-section>Jogadores</q-item-section>
-          </q-item>
-          <q-item clickable v-ripple tag="a" href="#">
-            <q-item-section>Mapa</q-item-section>
-          </q-item>
-          <q-item clickable v-ripple tag="a" href="#">
-            <q-item-section>Partida</q-item-section>
-          </q-item>
-        </q-list>
-      </q-drawer>
-
       <!-- Conteúdo principal -->
       <q-page-container>
         <q-page class="q-pa-lg custom-page">
