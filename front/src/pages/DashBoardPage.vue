@@ -1,6 +1,17 @@
 <template>
   <q-page class="q-pa-md">
     <q-layout view="lHh Lpr lFf">
+
+      <!-- Cabeçalho -->
+      <q-header elevated class="bg-primary text-white">
+        <q-toolbar>
+          <q-btn flat dense round icon="menu" aria-label="Menu" @click="toggleLeftDrawer" />
+          <q-toolbar-title class="text-white">
+            Dashboard
+          </q-toolbar-title>
+        </q-toolbar>
+      </q-header>
+
       <!-- Conteúdo principal -->
       <q-page-container>
         <q-page class="q-pa-lg custom-page">
@@ -129,7 +140,6 @@ const columns = [
   padding: 20px;
   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
   margin: 15px;
-  /* Adiciona espaçamento entre os cards */
 }
 
 .card-title {
