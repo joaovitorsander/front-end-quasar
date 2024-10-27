@@ -5,24 +5,25 @@
         <q-card class="q-pa-md custom-card">
           <q-form @submit="onSubmit">
             <div class="form-group">
+              <!-- Campo Nome do Time -->
               <q-input
                 filled
-                v-model="mapName"
-                label="Nome do Mapa"
+                v-model="nomeTime"
+                label="Nome do Time"
                 class="q-mb-md"
               />
 
+              <!-- Campo Sigla do Time -->
               <q-input
                 filled
-                v-model="description"
-                label="Descrição"
-                type="textarea"
+                v-model="siglaTime"
+                label="Sigla do Time"
                 class="q-mb-md"
               />
 
-              <!-- Custom File Upload com visual melhorado -->
+              <!-- Upload de Imagem do Time -->
               <q-uploader
-                label="Imagem do Mapa"
+                label="Imagem do Time"
                 @added="onFileAdded"
                 class="q-mb-md"
                 flat
@@ -30,11 +31,21 @@
                 color="primary"
               />
 
+              <!-- Campo Observação -->
               <q-input
                 filled
-                v-model="releaseDate"
+                v-model="observacao"
+                label="Observação"
+                type="textarea"
+                class="q-mb-md"
+              />
+
+              <!-- Campo Data de Registro -->
+              <q-input
+                filled
+                v-model="dataRegistro"
                 mask="##/##/####"
-                label="Data de Lançamento"
+                label="Data de Registro"
                 class="q-mb-md"
               >
                 <template v-slot:append>
@@ -42,21 +53,7 @@
                 </template>
               </q-input>
 
-              <!-- Seletor de Map Pool com caption -->
-              <div class="map-pool-section">
-                <q-item-label class="map-pool-caption">Map Pool</q-item-label>
-                <q-option-group
-                  v-model="mapPool"
-                  :options="[
-                    { label: 'Sim', value: 'sim' },
-                    { label: 'Não', value: 'nao' },
-                  ]"
-                  color="primary"
-                  inline
-                />
-              </div>
-
-              <!-- Botão de Salvar com design melhorado -->
+              <!-- Botão de Salvar -->
               <q-btn
                 type="submit"
                 label="SALVAR"
@@ -74,10 +71,10 @@
 <script setup>
 import { ref } from "vue";
 
-const mapName = ref("");
-const description = ref("");
-const releaseDate = ref("");
-const mapPool = ref("sim");
+const nomeTime = ref("");
+const siglaTime = ref("");
+const observacao = ref("");
+const dataRegistro = ref("");
 const selectedFile = ref(null);
 
 const onFileAdded = (files) => {
@@ -87,7 +84,8 @@ const onFileAdded = (files) => {
 };
 
 const onSubmit = () => {
-  console.log("Formulário enviado!");
+  // Aqui é onde você pode fazer a lógica para enviar o time ao JSON Server.
+  console.log("Formulário de Times enviado!");
 };
 </script>
 
@@ -112,18 +110,6 @@ const onSubmit = () => {
   display: flex;
   flex-direction: column;
   gap: 16px;
-}
-
-.map-pool-section {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.map-pool-caption {
-  font-weight: bold;
-  font-size: 1em;
-  color: #333;
 }
 
 .save-button {

@@ -38,7 +38,11 @@ const routes = [
       {
         path: "partida", // Partida page
         component: () => import("pages/PartidaPage.vue"),
-      }
+      },
+      {
+        path: "time", // Partida page
+        component: () => import("pages/TeamsPage.vue"),
+      },
     ],
   },
   // Fallback for pages not found

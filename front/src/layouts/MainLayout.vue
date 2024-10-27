@@ -8,8 +8,17 @@
     </q-header>
 
     <!-- Sidebar (Drawer) with mini state and hover -->
-    <q-drawer v-model="leftDrawerOpen" show-if-above :mini="miniState" @mouseenter="miniState = false"
-      @mouseleave="miniState = true" :width="200" :breakpoint="500" bordered class="custom-drawer">
+    <q-drawer
+      v-model="leftDrawerOpen"
+      show-if-above
+      :mini="miniState"
+      @mouseenter="miniState = false"
+      @mouseleave="miniState = true"
+      :width="200"
+      :breakpoint="500"
+      bordered
+      class="custom-drawer"
+    >
       <q-scroll-area class="fit" :horizontal-thumb-style="{ opacity: 0 }">
         <q-list padding>
           <q-item-label header>Menu</q-item-label>
@@ -69,6 +78,13 @@
             </q-item-section>
             <q-item-section>Partida</q-item-section>
           </q-item>
+
+          <q-item clickable v-ripple tag="router-link" to="/time">
+            <q-item-section avatar>
+              <q-icon name="people" />
+            </q-item-section>
+            <q-item-section>Time</q-item-section>
+          </q-item>
         </q-list>
       </q-scroll-area>
     </q-drawer>
@@ -81,13 +97,13 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref } from "vue";
 
-const leftDrawerOpen = ref(false)
-const miniState = ref(true)
+const leftDrawerOpen = ref(false);
+const miniState = ref(true);
 
 function toggleLeftDrawer() {
-  leftDrawerOpen.value = !leftDrawerOpen.value
+  leftDrawerOpen.value = !leftDrawerOpen.value;
 }
 </script>
 
