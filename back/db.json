@@ -57,6 +57,14 @@
       "Observacao": "Famoso time norte-americano com vitórias impressionantes em 2021.",
       "data_registro": "2020-09-14",
       "id": "a480"
+    },
+    {
+      "id": "7582",
+      "nome_time": "Pzo Team",
+      "sigla_time": "PzT",
+      "observacao": "Teste",
+      "data_registro": "27/10/2024",
+      "imagem_time": ""
     }
   ],
   "camp": [

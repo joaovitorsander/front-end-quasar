@@ -1,92 +1,61 @@
 <template>
   <q-page class="q-pa-md">
-    <q-page-container>
-      <q-page class="q-pa-lg custom-page">
-        <q-card class="q-pa-md custom-card">
-          <q-form @submit="onSubmit">
-            <div class="form-group">
-              <!-- Campo Nome do Time -->
-              <q-input
-                filled
-                v-model="nomeTime"
-                label="Nome do Time"
-                class="q-mb-md"
-              />
+    <q-card class="q-pa-md custom-card">
+      <q-form @submit.prevent="submitTime">
+        <q-input filled v-model="nome_time" label="Nome do Time" class="q-mb-md" />
+        <q-input filled v-model="sigla_time" label="Sigla do Time" class="q-mb-md" />
+        <q-uploader label="Imagem do Time" @added="onFileAdded" flat bordered color="primary" class="q-mb-md" />
+        <q-input filled v-model="observacao" label="Observação" type="textarea" class="q-mb-md" />
 
-              <!-- Campo Sigla do Time -->
-              <q-input
-                filled
-                v-model="siglaTime"
-                label="Sigla do Time"
-                class="q-mb-md"
-              />
+        <q-input filled v-model="data_registro" mask="##/##/####" label="Data de Início" class="q-mb-md">
+          <template v-slot:append>
+            <q-icon name="event" />
+          </template>
+        </q-input>
 
-              <!-- Upload de Imagem do Time -->
-              <q-uploader
-                label="Imagem do Time"
-                @added="onFileAdded"
-                class="q-mb-md"
-                flat
-                bordered
-                color="primary"
-              />
-
-              <!-- Campo Observação -->
-              <q-input
-                filled
-                v-model="observacao"
-                label="Observação"
-                type="textarea"
-                class="q-mb-md"
-              />
-
-              <!-- Campo Data de Registro -->
-              <q-input
-                filled
-                v-model="dataRegistro"
-                mask="##/##/####"
-                label="Data de Registro"
-                class="q-mb-md"
-              >
-                <template v-slot:append>
-                  <q-icon name="event" />
-                </template>
-              </q-input>
-
-              <!-- Botão de Salvar -->
-              <q-btn
-                type="submit"
-                label="SALVAR"
-                color="primary"
-                class="full-width q-mt-lg save-button"
-              />
-            </div>
-          </q-form>
-        </q-card>
-      </q-page>
-    </q-page-container>
+        <q-btn type="submit" label="Salvar Time" color="primary" class="full-width q-mt-md" />
+      </q-form>
+    </q-card>
   </q-page>
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref } from 'vue';
+import { useTimesStore } from 'src/stores/teamStore';
 
-const nomeTime = ref("");
-const siglaTime = ref("");
-const observacao = ref("");
-const dataRegistro = ref("");
+const store = useTimesStore();
+
+const nome_time = ref('');
+const sigla_time = ref('');
+const observacao = ref('');
+const data_registro = ref('');
 const selectedFile = ref(null);
 
-const onFileAdded = (files) => {
+
+function submitTime() {
+  const time = {
+    nome_time: nome_time.value,
+    sigla_time: sigla_time.value,
+    observacao: observacao.value,
+    data_registro: data_registro.value,
+    imagem_time: selectedFile.value ? selectedFile.value.name : ''
+  };
+
+  store.addTime(time);
+
+  // Limpa os campos após o envio
+  nome_time.value = '';
+  sigla_time.value = '';
+  observacao.value = '';
+  data_registro.value = '';
+  selectedFile.value = null;
+}
+
+function onFileAdded(files) {
   if (files.length > 0) {
     selectedFile.value = files[0];
   }
-};
-
-const onSubmit = () => {
-  // Aqui é onde você pode fazer a lógica para enviar o time ao JSON Server.
-  console.log("Formulário de Times enviado!");
-};
+}
 </script>
 
 <style scoped>
@@ -94,32 +63,10 @@ const onSubmit = () => {
   background-color: #ffffff;
   border-radius: 12px;
   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
-  max-width: 600px;
-  margin: auto;
 }
 
-.custom-page {
-  background-color: #f0f0f0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-}
-
-.form-group {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.save-button {
+.q-btn {
   font-weight: bold;
   font-size: 1.1em;
-}
-
-.q-input,
-.q-uploader {
-  background-color: #fff;
-  border-radius: 8px;
 }
 </style>
