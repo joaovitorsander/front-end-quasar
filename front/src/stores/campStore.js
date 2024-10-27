@@ -1,4 +1,3 @@
-// src/stores/campStore.js
 import { defineStore } from "pinia";
 import campService from "src/services/campService";
 
@@ -27,9 +26,25 @@ export const useCampeonatoStore = defineStore("campeonato", {
     async addCampeonato(campeonato) {
       try {
         await campService.addCampeonato(campeonato);
-        this.fetchCampeonatos(); // Atualiza a lista após adicionar
+        this.fetchCampeonatos();
       } catch (error) {
         console.error("Erro ao adicionar campeonato:", error);
+      }
+    },
+    async updateCampeonato(campId, campeonato) {
+      try {
+        await campService.updateCampeonato(campId, campeonato);
+        this.fetchCampeonatos();
+      } catch (error) {
+        console.error("Erro ao atualizar campeonato:", error);
+      }
+    },
+    async deleteCampeonato(campId) {
+      try {
+        await campService.deleteCampeonato(campId);
+        this.fetchCampeonatos();
+      } catch (error) {
+        console.error("Erro ao deletar campeonato:", error);
       }
     },
   },
