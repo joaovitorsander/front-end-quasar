@@ -21,22 +21,12 @@
   ],
   "mapas": [
     {
-      "mapa_id": 1,
-      "nome_do_mapa": "Ascent",
-      "descricao": "Um mapa com grandes áreas abertas divididas por portas controladas por jogadores.",
-      "imagem_mapa": "imagem_ascent.png",
-      "data_lancamento": "2020-06-02",
-      "map_pool": true,
-      "id": "113f"
-    },
-    {
-      "mapa_id": 2,
-      "nome_do_mapa": "Bind",
-      "descricao": "Mapas com teleportadores que permitem uma mudança rápida de rota.",
-      "imagem_mapa": "imagem_bind.png",
-      "data_lancamento": "2020-06-02",
-      "map_pool": true,
-      "id": "8f23"
+      "nome_mapa": "teste",
+      "descricao": "2222222",
+      "data_lancamento": "27/10/2024",
+      "map_pool": "sim",
+      "imagem_mapa": "",
+      "id": "8e2b"
     }
   ],
   "times": [
