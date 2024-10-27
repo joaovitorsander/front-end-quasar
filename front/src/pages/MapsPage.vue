@@ -28,7 +28,9 @@
       <!-- Listagem de Mapas -->
       <div class="list-section">
         <q-card class="q-pa-md custom-card">
-          <q-table :rows="maps" :columns="columns" row-key="id" title="Mapas Cadastrados" dense flat bordered>
+          <!-- Verifica se há mapas para exibir a tabela -->
+          <q-table v-if="Array.isArray(maps) && maps.length > 0" :rows="maps" :columns="columns" row-key="id"
+            title="Mapas Cadastrados" dense flat bordered>
             <template v-slot:body-cell-map_pool="props">
               <q-td :props="props">
                 {{ props.row.map_pool === 'sim' ? 'Sim' : 'Não' }}
@@ -41,8 +43,11 @@
               </q-td>
             </template>
           </q-table>
+          <!-- Exibe a mensagem se não houver mapas cadastrados -->
+          <div v-else class="q-pa-md">Nenhum mapa cadastrado</div>
         </q-card>
       </div>
+
     </div>
   </q-page>
 </template>

@@ -19,53 +19,9 @@
       "id": "daba"
     }
   ],
-  "mapas": [
-    {
-      "nome_mapa": "teste",
-      "descricao": "2222222",
-      "data_lancamento": "27/10/2024",
-      "map_pool": "sim",
-      "imagem_mapa": "",
-      "id": "8e2b"
-    }
-  ],
-  "times": [
-    {
-      "id": "7582",
-      "nome_time": "Pzo Team",
-      "sigla_time": "PzT",
-      "observacao": "Teste",
-      "data_registro": "27/10/2024",
-      "imagem_time": ""
-    },
-    {
-      "nome_time": "teste",
-      "sigla_time": "tt",
-      "observacao": "teste111111",
-      "data_registro": "24/10/2024",
-      "imagem_time": "",
-      "id": "bcc4"
-    }
-  ],
-  "camp": [
-    {
-      "nome_camp": "teste",
-      "edicao": "teste",
-      "premiacao": "teste",
-      "organizacao": "teste",
-      "formato": "teste",
-      "time_id": {
-        "id": "7582",
-        "nome_time": "Pzo Team",
-        "sigla_time": "PzT",
-        "observacao": "Teste",
-        "data_registro": "27/10/2024",
-        "imagem_time": ""
-      },
-      "data_inicio_camp": "27/10/2024",
-      "id": "a754"
-    }
-  ],
+  "mapas": [],
+  "times": [],
+  "camp": [],
   "jogadores_times": [
     {
       "jogador_time_id": 1,

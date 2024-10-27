@@ -24,7 +24,9 @@
       <!-- Listagem de Times -->
       <div class="list-section">
         <q-card class="q-pa-md custom-card">
-          <q-table :rows="times" :columns="columns" row-key="id" title="Times Cadastrados" dense flat bordered>
+          <!-- Verifica se há times para exibir a tabela -->
+          <q-table v-if="Array.isArray(times) && times.length > 0" :rows="times" :columns="columns" row-key="id"
+            title="Times Cadastrados" dense flat bordered>
             <template v-slot:body-cell-actions="props">
               <q-td :props="props" align="right">
                 <q-btn flat round icon="edit" @click="loadTime(props.row)" />
@@ -32,6 +34,8 @@
               </q-td>
             </template>
           </q-table>
+          <!-- Exibe a mensagem se não houver times cadastrados -->
+          <div v-else class="q-pa-md">Nenhum time cadastrado</div>
         </q-card>
       </div>
     </div>
