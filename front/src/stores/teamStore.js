@@ -1,15 +1,15 @@
-// src/stores/useTimesStore.js
+// src/stores/teamStore.js
 import { defineStore } from "pinia";
-import TimesService from "src/services/teamService";
+import teamService from "src/services/teamService";
 import { ref } from "vue";
 
-export const useTimesStore = defineStore("times", () => {
+export const useTimesStore = defineStore("teamStore", () => {
   const times = ref([]);
   const error = ref(null);
 
   async function fetchTimes() {
     try {
-      const response = await TimesService.getTimes();
+      const response = await teamService.getTimes();
       times.value = response.data;
     } catch (err) {
       error.value = "Erro ao buscar times";
@@ -19,8 +19,8 @@ export const useTimesStore = defineStore("times", () => {
 
   async function addTime(time) {
     try {
-      const response = await TimesService.addTime(time);
-      times.value.push(response.data);
+      await teamService.addTime(time);
+      await fetchTimes(); // Atualiza a lista após adicionar
     } catch (err) {
       error.value = "Erro ao adicionar time";
       console.error(err);
@@ -29,9 +29,8 @@ export const useTimesStore = defineStore("times", () => {
 
   async function updateTime(timeId, time) {
     try {
-      await TimesService.updateTime(timeId, time);
-      const index = times.value.findIndex((t) => t.id === timeId);
-      if (index !== -1) times.value[index] = time;
+      await teamService.updateTime(timeId, time);
+      await fetchTimes(); // Atualiza a lista após atualizar
     } catch (err) {
       error.value = "Erro ao atualizar time";
       console.error(err);
@@ -40,8 +39,8 @@ export const useTimesStore = defineStore("times", () => {
 
   async function deleteTime(timeId) {
     try {
-      await TimesService.deleteTime(timeId);
-      times.value = times.value.filter((t) => t.id !== timeId);
+      await teamService.deleteTime(timeId);
+      await fetchTimes(); // Atualiza a lista após deletar
     } catch (err) {
       error.value = "Erro ao deletar time";
       console.error(err);

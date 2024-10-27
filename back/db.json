@@ -31,30 +31,20 @@
   ],
   "times": [
     {
-      "time_id": 1,
-      "nome_time": "LOUD",
-      "sigla_time": "LD",
-      "imagem_time": "imagem_loud.png",
-      "Observacao": "Campeão mundial de Valorant 2022.",
-      "data_registro": "2021-03-20",
-      "id": "a10b"
-    },
-    {
-      "time_id": 2,
-      "nome_time": "Sentinels",
-      "sigla_time": "SEN",
-      "imagem_time": "imagem_sentinels.png",
-      "Observacao": "Famoso time norte-americano com vitórias impressionantes em 2021.",
-      "data_registro": "2020-09-14",
-      "id": "a480"
-    },
-    {
       "id": "7582",
       "nome_time": "Pzo Team",
       "sigla_time": "PzT",
       "observacao": "Teste",
       "data_registro": "27/10/2024",
       "imagem_time": ""
+    },
+    {
+      "nome_time": "teste",
+      "sigla_time": "tt",
+      "observacao": "teste111111",
+      "data_registro": "24/10/2024",
+      "imagem_time": "",
+      "id": "bcc4"
     }
   ],
   "camp": [
