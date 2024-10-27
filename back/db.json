@@ -105,28 +105,7 @@
       "id": "894f"
     }
   ],
-  "agentes": [
-    {
-      "agente_id": 1,
-      "nome_agente": "Jett",
-      "sexo": "Feminino",
-      "habilidade1": "Brisa de Impulso",
-      "habilidade2": "Fumaça Explosiva",
-      "habilidade3": "Corrente Ascendente",
-      "ultimate": "Tormenta de Aço",
-      "id": "3e2a"
-    },
-    {
-      "agente_id": 2,
-      "nome_agente": "Sova",
-      "sexo": "Masculino",
-      "habilidade1": "Flecha de Choque",
-      "habilidade2": "Drone Coruja",
-      "habilidade3": "Flecha Rastreadora",
-      "ultimate": "Fúria do Caçador",
-      "id": "8b8a"
-    }
-  ],
+  "agentes": [],
   "estatisticas_do_jogador": [
     {
       "estat_jog_id": 1,

@@ -21,7 +21,7 @@ const routes = [
       },
       {
         path: "agent", // Agent page
-        component: () => import("pages/AgentPage.vue"),
+        component: () => import("pages/AgentsPage.vue"),
       },
       {
         path: "camp", // Camp page

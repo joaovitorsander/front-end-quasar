@@ -86,9 +86,7 @@ onMounted(async () => {
 });
 
 function getTeamName(teamId) {
-  const rawTeamId = toRaw(teamId); // garante acesso ao valor puro do id
-  console.log("ID do time buscado (raw):", rawTeamId);
-
+  const rawTeamId = toRaw(teamId);
   const team = store.times.find((t) => t.id === rawTeamId.id || t.id === rawTeamId);
   return team ? team.nome_time : 'Time não encontrado';
 }
