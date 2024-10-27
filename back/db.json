@@ -1,158 +1,237 @@
 {
-    "usuarios": [
-      {
-        "usuario_id": 1,
-        "nome_de_usuario": "vinioliveira",
-        "nick_usuario": "Vinix",
-        "imagem_perfil": "imagem_perfil_vinix.png",
-        "senha": "vinix@2024",
-        "data_registro": "2023-07-10"
-      },
-      {
-        "usuario_id": 2,
-        "nome_de_usuario": "carolinamendes",
-        "nick_usuario": "Carool",
-        "imagem_perfil": "imagem_perfil_carool.png",
-        "senha": "carool123",
-        "data_registro": "2023-08-01"
-      }
-    ],
-    "mapas": [
-      {
-        "mapa_id": 1,
-        "nome_do_mapa": "Ascent",
-        "descricao": "Um mapa com grandes áreas abertas divididas por portas controladas por jogadores.",
-        "imagem_mapa": "imagem_ascent.png",
-        "data_lancamento": "2020-06-02",
-        "map_pool": true
-      },
-      {
-        "mapa_id": 2,
-        "nome_do_mapa": "Bind",
-        "descricao": "Mapas com teleportadores que permitem uma mudança rápida de rota.",
-        "imagem_mapa": "imagem_bind.png",
-        "data_lancamento": "2020-06-02",
-        "map_pool": true
-      }
-    ],
-    "times": [
-      {
+  "usuarios": [
+    {
+      "usuario_id": 1,
+      "nome_de_usuario": "vinioliveira",
+      "nick_usuario": "Vinix",
+      "imagem_perfil": "imagem_perfil_vinix.png",
+      "senha": "vinix@2024",
+      "data_registro": "2023-07-10",
+      "id": "f9e0"
+    },
+    {
+      "usuario_id": 2,
+      "nome_de_usuario": "carolinamendes",
+      "nick_usuario": "Carool",
+      "imagem_perfil": "imagem_perfil_carool.png",
+      "senha": "carool123",
+      "data_registro": "2023-08-01",
+      "id": "daba"
+    }
+  ],
+  "mapas": [
+    {
+      "mapa_id": 1,
+      "nome_do_mapa": "Ascent",
+      "descricao": "Um mapa com grandes áreas abertas divididas por portas controladas por jogadores.",
+      "imagem_mapa": "imagem_ascent.png",
+      "data_lancamento": "2020-06-02",
+      "map_pool": true,
+      "id": "113f"
+    },
+    {
+      "mapa_id": 2,
+      "nome_do_mapa": "Bind",
+      "descricao": "Mapas com teleportadores que permitem uma mudança rápida de rota.",
+      "imagem_mapa": "imagem_bind.png",
+      "data_lancamento": "2020-06-02",
+      "map_pool": true,
+      "id": "8f23"
+    }
+  ],
+  "times": [
+    {
+      "time_id": 1,
+      "nome_time": "LOUD",
+      "sigla_time": "LD",
+      "imagem_time": "imagem_loud.png",
+      "Observacao": "Campeão mundial de Valorant 2022.",
+      "data_registro": "2021-03-20",
+      "id": "a10b"
+    },
+    {
+      "time_id": 2,
+      "nome_time": "Sentinels",
+      "sigla_time": "SEN",
+      "imagem_time": "imagem_sentinels.png",
+      "Observacao": "Famoso time norte-americano com vitórias impressionantes em 2021.",
+      "data_registro": "2020-09-14",
+      "id": "a480"
+    }
+  ],
+  "camp": [
+    {
+      "camp_id": 1,
+      "time_id": 1,
+      "premiacao": "1000000",
+      "organizacao": "Riot Games",
+      "nome_camp": "VALORANT Champions Tour 2024",
+      "edicao": "Edição 4",
+      "formato": "MD5",
+      "data_inicio_camp": "2024-03-01",
+      "id": "e332"
+    },
+    {
+      "camp_id": 2,
+      "time_id": 2,
+      "premiacao": "750000",
+      "organizacao": "Riot Games",
+      "nome_camp": "Masters Reykjavik",
+      "edicao": "Edição 3",
+      "formato": "MD5",
+      "data_inicio_camp": "2023-05-10",
+      "id": "6f51"
+    },
+    {
+      "id": "5beb",
+      "nome_camp": "Teste",
+      "edicao": "2024",
+      "premiacao": "",
+      "organizacao": "",
+      "formato": "",
+      "time_id": null,
+      "data_inicio_camp": ""
+    },
+    {
+      "id": "5030",
+      "nome_camp": "Teste2",
+      "edicao": "2024",
+      "premiacao": "1500",
+      "organizacao": "Pzo",
+      "formato": "Mata-mata",
+      "time_id": {
         "time_id": 1,
         "nome_time": "LOUD",
         "sigla_time": "LD",
         "imagem_time": "imagem_loud.png",
         "Observacao": "Campeão mundial de Valorant 2022.",
-        "data_registro": "2021-03-20"
+        "data_registro": "2021-03-20",
+        "id": "a10b"
       },
-      {
+      "data_inicio_camp": "27/10/2024"
+    },
+    {
+      "id": "3294",
+      "nome_camp": "teste",
+      "edicao": "2024",
+      "premiacao": "1500",
+      "organizacao": "pzo",
+      "formato": "mata-mata",
+      "time_id": {
+        "time_id": 1,
+        "nome_time": "LOUD",
+        "sigla_time": "LD",
+        "imagem_time": "imagem_loud.png",
+        "Observacao": "Campeão mundial de Valorant 2022.",
+        "data_registro": "2021-03-20",
+        "id": "a10b"
+      },
+      "data_inicio_camp": "27/10/2024"
+    },
+    {
+      "id": "0cec",
+      "nome_camp": "teste",
+      "edicao": "2022",
+      "premiacao": "1500",
+      "organizacao": "pinhal",
+      "formato": "teste",
+      "time_id": {
         "time_id": 2,
         "nome_time": "Sentinels",
         "sigla_time": "SEN",
         "imagem_time": "imagem_sentinels.png",
         "Observacao": "Famoso time norte-americano com vitórias impressionantes em 2021.",
-        "data_registro": "2020-09-14"
-      }
-    ],
-    "camp": [
-      {
-        "camp_id": 1,
-        "time_id": 1,
-        "premiacao": "1000000",
-        "organizacao": "Riot Games",
-        "nome_camp": "VALORANT Champions Tour 2024",
-        "edicao": "Edição 4",
-        "formato": "MD5",
-        "data_inicio_camp": "2024-03-01"
+        "data_registro": "2020-09-14",
+        "id": "a480"
       },
-      {
-        "camp_id": 2,
-        "time_id": 2,
-        "premiacao": "750000",
-        "organizacao": "Riot Games",
-        "nome_camp": "Masters Reykjavik",
-        "edicao": "Edição 3",
-        "formato": "MD5",
-        "data_inicio_camp": "2023-05-10"
-      }
-    ],
-    "jogadores_times": [
-      {
-        "jogador_time_id": 1,
-        "jogador_id": 1,
-        "time_id": 1,
-        "data_associacao": "2022-01-15",
-        "data_desligamento": null,
-        "funcao": "Duelista",
-        "situacao": "Ativo",
-        "reserva": false
-      },
-      {
-        "jogador_time_id": 2,
-        "jogador_id": 2,
-        "time_id": 2,
-        "data_associacao": "2021-06-10",
-        "data_desligamento": null,
-        "funcao": "Controlador",
-        "situacao": "Ativo",
-        "reserva": false
-      }
-    ],
-    "partidas": [
-      {
-        "partida_id": 1,
-        "mapa_id": 1,
-        "camp_id": 1,
-        "time_id_1": 1,
-        "time_id_2": 2,
-        "duracao": "58 minutos",
-        "data_da_partida": "2024-04-15",
-        "rounds_time_1": 13,
-        "rounds_time_2": 11,
-        "observacao": "final"
-      }
-    ],
-    "agentes": [
-      {
-        "agente_id": 1,
-        "nome_agente": "Jett",
-        "sexo": "Feminino",
-        "habilidade1": "Brisa de Impulso",
-        "habilidade2": "Fumaça Explosiva",
-        "habilidade3": "Corrente Ascendente",
-        "ultimate": "Tormenta de Aço"
-      },
-      {
-        "agente_id": 2,
-        "nome_agente": "Sova",
-        "sexo": "Masculino",
-        "habilidade1": "Flecha de Choque",
-        "habilidade2": "Drone Coruja",
-        "habilidade3": "Flecha Rastreadora",
-        "ultimate": "Fúria do Caçador"
-      }
-    ],
-    "estatisticas_do_jogador": [
-      {
-        "estat_jog_id": 1,
-        "jog_id": 1,
-        "partida_id": 1,
-        "agente_id": 1,
-        "kills": 22,
-        "mortes": 18,
-        "assistencias": 5,
-        "plants": 3,
-        "defuses": 1
-      },
-      {
-        "estat_jog_id": 2,
-        "jog_id": 2,
-        "partida_id": 1,
-        "agente_id": 2,
-        "kills": 18,
-        "mortes": 20,
-        "assistencias": 7,
-        "plants": 1,
-        "defuses": 2
-      }
-    ]
-  }  
+      "data_inicio_camp": "2024-10-24"
+    }
+  ],
+  "jogadores_times": [
+    {
+      "jogador_time_id": 1,
+      "jogador_id": 1,
+      "time_id": 1,
+      "data_associacao": "2022-01-15",
+      "data_desligamento": null,
+      "funcao": "Duelista",
+      "situacao": "Ativo",
+      "reserva": false,
+      "id": "7492"
+    },
+    {
+      "jogador_time_id": 2,
+      "jogador_id": 2,
+      "time_id": 2,
+      "data_associacao": "2021-06-10",
+      "data_desligamento": null,
+      "funcao": "Controlador",
+      "situacao": "Ativo",
+      "reserva": false,
+      "id": "c7b1"
+    }
+  ],
+  "partidas": [
+    {
+      "partida_id": 1,
+      "mapa_id": 1,
+      "camp_id": 1,
+      "time_id_1": 1,
+      "time_id_2": 2,
+      "duracao": "58 minutos",
+      "data_da_partida": "2024-04-15",
+      "rounds_time_1": 13,
+      "rounds_time_2": 11,
+      "observacao": "final",
+      "id": "894f"
+    }
+  ],
+  "agentes": [
+    {
+      "agente_id": 1,
+      "nome_agente": "Jett",
+      "sexo": "Feminino",
+      "habilidade1": "Brisa de Impulso",
+      "habilidade2": "Fumaça Explosiva",
+      "habilidade3": "Corrente Ascendente",
+      "ultimate": "Tormenta de Aço",
+      "id": "3e2a"
+    },
+    {
+      "agente_id": 2,
+      "nome_agente": "Sova",
+      "sexo": "Masculino",
+      "habilidade1": "Flecha de Choque",
+      "habilidade2": "Drone Coruja",
+      "habilidade3": "Flecha Rastreadora",
+      "ultimate": "Fúria do Caçador",
+      "id": "8b8a"
+    }
+  ],
+  "estatisticas_do_jogador": [
+    {
+      "estat_jog_id": 1,
+      "jog_id": 1,
+      "partida_id": 1,
+      "agente_id": 1,
+      "kills": 22,
+      "mortes": 18,
+      "assistencias": 5,
+      "plants": 3,
+      "defuses": 1,
+      "id": "5009"
+    },
+    {
+      "estat_jog_id": 2,
+      "jog_id": 2,
+      "partida_id": 1,
+      "agente_id": 2,
+      "kills": 18,
+      "mortes": 20,
+      "assistencias": 7,
+      "plants": 1,
+      "defuses": 2,
+      "id": "d496"
+    }
+  ]
+}
