@@ -77,6 +77,25 @@
       },
       "reserva": false,
       "id": "32b8"
+    },
+    {
+      "id": "dc77",
+      "time_id": {
+        "id": "d021",
+        "nome_time": "Teste",
+        "sigla_time": "tt",
+        "observacao": "teste",
+        "data_registro": "02/11/2024",
+        "imagem_time": ""
+      },
+      "data_associacao": "01/11/2024",
+      "data_desligamento": "",
+      "funcao": "back",
+      "situacao": {
+        "label": "Ativo",
+        "value": "Ativo"
+      },
+      "reserva": true
     }
   ],
   "partidas": [
