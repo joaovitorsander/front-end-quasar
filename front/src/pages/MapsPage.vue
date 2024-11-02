@@ -1,7 +1,6 @@
 <template>
   <q-page class="q-pa-md">
     <div class="layout-container">
-      <!-- Formulário de Cadastro/Editar Mapa -->
       <div class="form-section">
         <q-card class="q-pa-md custom-card">
           <q-form @submit.prevent="submitMap">
@@ -25,10 +24,8 @@
         </q-card>
       </div>
 
-      <!-- Listagem de Mapas -->
       <div class="list-section">
         <q-card class="q-pa-md custom-card">
-          <!-- Verifica se há mapas para exibir a tabela -->
           <q-table v-if="Array.isArray(maps) && maps.length > 0" :rows="maps" :columns="columns" row-key="id"
             title="Mapas Cadastrados" dense flat bordered>
             <template v-slot:body-cell-map_pool="props">
@@ -43,7 +40,6 @@
               </q-td>
             </template>
           </q-table>
-          <!-- Exibe a mensagem se não houver mapas cadastrados -->
           <div v-else class="q-pa-md">Nenhum mapa cadastrado</div>
         </q-card>
       </div>

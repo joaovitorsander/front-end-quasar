@@ -40,7 +40,6 @@ const handleRegister = () => {
   if (!username.value || !nickname.value || !password.value) {
     return
   }
-  // Aqui você colocaria a lógica para registrar o usuário
   console.log('Registro:', username.value, nickname.value, password.value)
 }
 

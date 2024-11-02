@@ -1,7 +1,6 @@
 <template>
   <q-page class="q-pa-md">
     <div class="layout-container">
-      <!-- Formulário de Cadastro/Editar Time -->
       <div class="form-section">
         <q-card class="q-pa-md custom-card">
           <q-form @submit.prevent="submitTime">
@@ -21,10 +20,8 @@
         </q-card>
       </div>
 
-      <!-- Listagem de Times -->
       <div class="list-section">
         <q-card class="q-pa-md custom-card">
-          <!-- Verifica se há times para exibir a tabela -->
           <q-table v-if="Array.isArray(times) && times.length > 0" :rows="times" :columns="columns" row-key="id"
             title="Times Cadastrados" dense flat bordered>
             <template v-slot:body-cell-actions="props">
@@ -34,7 +31,6 @@
               </q-td>
             </template>
           </q-table>
-          <!-- Exibe a mensagem se não houver times cadastrados -->
           <div v-else class="q-pa-md">Nenhum time cadastrado</div>
         </q-card>
       </div>

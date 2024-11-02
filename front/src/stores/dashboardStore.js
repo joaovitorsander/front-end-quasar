@@ -17,11 +17,9 @@ export const useDashboardStore = defineStore("dashboardStore", {
       this.loading = true;
       this.error = null;
       try {
-        // Chamando o serviço para buscar os dados
         const data = await dashboardService.getDashboardData();
-        console.log("Dados carregados:", data); // Verifique os dados
+        console.log("Dados carregados:", data);
 
-        // Atribuindo os dados ao estado
         this.topPlayers = data.topPlayers.slice(0, 3);
         this.topTimes = data.topTimes.slice(0, 3);
         this.ranking = data.ranking;

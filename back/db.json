@@ -22,30 +22,7 @@
   "mapas": [],
   "times": [],
   "camp": [],
-  "jogadores_times": [
-    {
-      "jogador_time_id": 1,
-      "jogador_id": 1,
-      "time_id": 1,
-      "data_associacao": "2022-01-15",
-      "data_desligamento": null,
-      "funcao": "Duelista",
-      "situacao": "Ativo",
-      "reserva": false,
-      "id": "7492"
-    },
-    {
-      "jogador_time_id": 2,
-      "jogador_id": 2,
-      "time_id": 2,
-      "data_associacao": "2021-06-10",
-      "data_desligamento": null,
-      "funcao": "Controlador",
-      "situacao": "Ativo",
-      "reserva": false,
-      "id": "c7b1"
-    }
-  ],
+  "jogadores_times": [],
   "partidas": [
     {
       "partida_id": 1,

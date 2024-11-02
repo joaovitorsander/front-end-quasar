@@ -3,7 +3,6 @@ import { api } from "src/boot/axios";
 export default {
   async getDashboardData() {
     try {
-      // Fazendo todas as requisições simultaneamente
       const [
         playersResponse,
         teamsResponse,
@@ -11,14 +10,13 @@ export default {
         agentsResponse,
         mapsResponse,
       ] = await Promise.all([
-        api.get("/usuarios"), // Requisição para usuários
-        api.get("/times"), // Requisição para times
-        api.get("/partidas"), // Requisição para partidas
-        api.get("/agentes"), // Requisição para agentes
-        api.get("/mapas"), // Requisição para mapas
+        api.get("/usuarios"),
+        api.get("/times"),
+        api.get("/partidas"),
+        api.get("/agentes"),
+        api.get("/mapas"),
       ]);
 
-      // Retornando os dados como um objeto
       return {
         topPlayers: playersResponse.data,
         topTimes: teamsResponse.data,

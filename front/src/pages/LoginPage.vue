@@ -42,12 +42,11 @@ const handleLogin = () => {
   if (!username.value || !password.value) {
     return
   }
-  // Aqui você colocaria a lógica para autenticar o usuário
   console.log('Login:', username.value, password.value)
 }
 
 const goToRegister = () => {
-  router.push('/register') // Supondo que tenha uma rota para a página de registro
+  router.push('/register')
 }
 </script>
 

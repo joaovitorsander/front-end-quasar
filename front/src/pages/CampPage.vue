@@ -1,7 +1,6 @@
 <template>
   <q-page class="q-pa-md">
     <div class="layout-container">
-      <!-- Formulário de Cadastro/Editar Campeonato -->
       <div class="form-section">
         <q-card class="q-pa-md custom-card">
           <q-form @submit.prevent="submitCampeonato">
@@ -27,13 +26,10 @@
         </q-card>
       </div>
 
-      <!-- Listagem de Campeonatos -->
       <div class="list-section">
         <q-card class="q-pa-md custom-card">
-          <!-- Verifica se há campeonatos para exibir a tabela -->
           <q-table v-if="Array.isArray(campeonatos) && campeonatos.length > 0" :rows="campeonatos" :columns="columns"
             row-key="id" title="Campeonatos Cadastrados" dense flat bordered>
-            <!-- Atualizamos o slot para exibir o nome do time ao invés do ID -->
             <template v-slot:body-cell-time="props">
               <q-td :props="props">{{ getTeamName(props.row.time_id) }}</q-td>
             </template>
@@ -44,7 +40,6 @@
               </q-td>
             </template>
           </q-table>
-          <!-- Exibe a mensagem se não houver campeonatos cadastrados -->
           <div v-else class="q-pa-md">Nenhum campeonato cadastrado</div>
         </q-card>
       </div>

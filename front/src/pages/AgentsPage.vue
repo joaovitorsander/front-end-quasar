@@ -1,7 +1,6 @@
 <template>
   <q-page class="q-pa-md">
     <div class="layout-container">
-      <!-- Formulário de Cadastro/Editar Agente -->
       <div class="form-section">
         <q-card class="q-pa-md custom-card">
           <q-form @submit.prevent="submitAgent">
@@ -18,12 +17,15 @@
           </q-form>
         </q-card>
       </div>
-
-      <!-- Listagem de Agentes -->
       <div class="list-section">
         <q-card class="q-pa-md custom-card">
           <q-table v-if="Array.isArray(agentes) && agentes.length > 0" :rows="agentes" :columns="columns" row-key="id"
             title="Agentes Cadastrados" dense flat bordered>
+            <template v-slot:body-cell-sexo="props">
+              <q-td :props="props">
+                {{ props.row.sexo }}
+              </q-td>
+            </template>
             <template v-slot:body-cell-actions="props">
               <q-td :props="props" align="right">
                 <q-btn flat round icon="edit" @click="loadAgent(props.row)" />
@@ -34,6 +36,7 @@
           <div v-else class="q-pa-md">Nenhum agente cadastrado</div>
         </q-card>
       </div>
+
     </div>
   </q-page>
 </template>

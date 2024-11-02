@@ -33,7 +33,7 @@ const routes = [
       },
       {
         path: "jogadores", // Jogadores page
-        component: () => import("pages/JogadoresPage.vue"),
+        component: () => import("pages/JogadoresTimesPage.vue"),
       },
       {
         path: "partida", // Partida page

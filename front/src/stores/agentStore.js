@@ -3,7 +3,7 @@ import agentService from "src/services/agentService";
 
 export const useAgentStore = defineStore("agentStore", {
   state: () => ({
-    agentes: [], // Certifique-se de que começa como array vazio
+    agentes: [], 
     error: null,
   }),
   actions: {

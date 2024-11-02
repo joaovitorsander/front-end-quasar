@@ -1,28 +1,17 @@
 <template>
   <q-page class="q-pa-md">
     <q-layout view="lHh Lpr lFf">
-      <!-- Conteúdo principal -->
       <q-page-container>
         <q-page class="q-pa-lg custom-page">
-          <!-- Spinner de carregamento -->
           <q-spinner v-if="loading" size="30px" color="primary" />
           <div v-if="error" class="text-negative">{{ error }}</div>
-
-          <!-- Cards principais -->
-          <div
-            class="row q-gutter-md q-justify-center q-mt-md"
-            v-if="!loading && !error"
-          >
-            <!-- Top 3 players -->
+          <div class="row q-gutter-md q-justify-center q-mt-md" v-if="!loading && !error">
             <q-card class="col-4 custom-card">
               <q-card-section>
                 <div class="text-h6 card-title">Top 3 Players</div>
                 <q-separator class="q-mb-md" />
                 <div v-if="topPlayers.length > 0">
-                  <q-item-label
-                    v-for="player in topPlayers"
-                    :key="player.usuario_id"
-                  >
+                  <q-item-label v-for="player in topPlayers" :key="player.usuario_id">
                     {{ player.nick_usuario || "Nome não disponível" }}
                   </q-item-label>
                 </div>
@@ -30,7 +19,6 @@
               </q-card-section>
             </q-card>
 
-            <!-- Top 3 Times -->
             <q-card class="col-4 custom-card">
               <q-card-section>
                 <div class="text-h6 card-title">Top 3 Times</div>
@@ -44,36 +32,24 @@
               </q-card-section>
             </q-card>
 
-            <!-- Ranking do campeonato -->
             <q-card class="col-12 custom-card">
               <q-card-section>
                 <div class="text-h6 card-title">Ranking do Campeonato</div>
                 <q-separator class="q-mb-md" />
-                <q-table
-                  v-if="ranking.length > 0"
-                  :rows-per-page-options="[5]"
-                  :rows="ranking"
-                  :columns="columns"
-                ></q-table>
+                <q-table v-if="ranking.length > 0" :rows-per-page-options="[5]" :rows="ranking"
+                  :columns="columns"></q-table>
                 <div v-else>Nenhum dado disponível para o ranking.</div>
               </q-card-section>
             </q-card>
           </div>
 
-          <div
-            class="row q-gutter-md q-justify-center q-mt-md"
-            v-if="!loading && !error"
-          >
-            <!-- Agentes mais jogados -->
+          <div class="row q-gutter-md q-justify-center q-mt-md" v-if="!loading && !error">
             <q-card class="col-5 custom-card">
               <q-card-section>
                 <div class="text-h6 card-title">Agentes mais jogados</div>
                 <q-separator class="q-mb-md" />
                 <div v-if="mostPlayedAgents.length > 0">
-                  <q-item-label
-                    v-for="agente in mostPlayedAgents"
-                    :key="agente.agente_id"
-                  >
+                  <q-item-label v-for="agente in mostPlayedAgents" :key="agente.agente_id">
                     {{ agente.nome_agente }}
                   </q-item-label>
                 </div>
@@ -81,16 +57,12 @@
               </q-card-section>
             </q-card>
 
-            <!-- Mapas mais jogados -->
             <q-card class="col-5 custom-card">
               <q-card-section>
                 <div class="text-h6 card-title">Mapas mais jogados</div>
                 <q-separator class="q-mb-md" />
                 <div v-if="mostPlayedMaps.length > 0">
-                  <q-item-label
-                    v-for="mapa in mostPlayedMaps"
-                    :key="mapa.mapa_id"
-                  >
+                  <q-item-label v-for="mapa in mostPlayedMaps" :key="mapa.mapa_id">
                     {{ mapa.nome_do_mapa }}
                   </q-item-label>
                 </div>
@@ -114,7 +86,6 @@ onMounted(() => {
   store.fetchDashboardData();
 });
 
-// Usando `computed` para garantir reatividade
 const loading = computed(() => store.loading);
 const error = computed(() => store.error);
 const topPlayers = computed(() => store.topPlayers);
@@ -131,7 +102,6 @@ const columns = [
 </script>
 
 <style scoped>
-/* Custom styles for better visuals */
 .custom-drawer {
   background-color: #f7f7f7;
 }
