@@ -19,10 +19,66 @@
       "id": "daba"
     }
   ],
-  "mapas": [],
-  "times": [],
-  "camp": [],
-  "jogadores_times": [],
+  "mapas": [
+    {
+      "id": "e2c8",
+      "nome_mapa": "teste",
+      "descricao": "teste",
+      "data_lancamento": "02/11/2024",
+      "map_pool": "sim",
+      "imagem_mapa": ""
+    }
+  ],
+  "times": [
+    {
+      "id": "d021",
+      "nome_time": "Teste",
+      "sigla_time": "tt",
+      "observacao": "teste",
+      "data_registro": "02/11/2024",
+      "imagem_time": ""
+    }
+  ],
+  "camp": [
+    {
+      "id": "a39e",
+      "nome_camp": "teste",
+      "edicao": "teste",
+      "premiacao": "teste",
+      "organizacao": "teste",
+      "formato": "teste",
+      "time_id": {
+        "id": "d021",
+        "nome_time": "Teste",
+        "sigla_time": "tt",
+        "observacao": "teste",
+        "data_registro": "02/11/2024",
+        "imagem_time": ""
+      },
+      "data_inicio_camp": "02/11/2024"
+    }
+  ],
+  "jogadores_times": [
+    {
+      "time_id": {
+        "id": "d021",
+        "nome_time": "Teste",
+        "sigla_time": "tt",
+        "observacao": "teste",
+        "data_registro": "02/11/2024",
+        "imagem_time": ""
+      },
+      "data_associacao": "02/11/2024",
+      "data_desligamento": "",
+      "funcao": "entry",
+      "situacao": {
+        "label": "Inativo",
+        "value": "Inativo"
+      },
+      "reserva": false,
+      "id": "32b8"
+    }
+  ],
   "partidas": [
     {
       "partida_id": 1,
@@ -38,7 +94,20 @@
       "id": "894f"
     }
   ],
-  "agentes": [],
+  "agentes": [
+    {
+      "id": "f353",
+      "nome_agente": "teste",
+      "sexo": {
+        "label": "Masculino",
+        "value": "masculino"
+      },
+      "habilidade1": "teste",
+      "habilidade2": "teste",
+      "habilidade3": "teste",
+      "ultimate": "teste"
+    }
+  ],
   "estatisticas_do_jogador": [
     {
       "estat_jog_id": 1,

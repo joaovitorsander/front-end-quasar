@@ -1,9 +1,10 @@
 import { defineStore } from "pinia";
 import jogadorTimeService from "src/services/JogadoresTimesService";
 
-export const useJogadoresTimesStore = defineStore("jogadoresTimesStore", {
+export const useJogadoresTimesStore = defineStore("JogadoresTimesStore", {
   state: () => ({
     jogadoresTimes: [],
+    times: [],
     error: null,
   }),
   actions: {
@@ -13,6 +14,15 @@ export const useJogadoresTimesStore = defineStore("jogadoresTimesStore", {
         this.jogadoresTimes = response.data;
       } catch (error) {
         this.error = "Erro ao buscar jogadores times.";
+        console.error(error);
+      }
+    },
+    async fetchTimes() {
+      try {
+        const response = await jogadorTimeService.getTimes();
+        this.times = response.data;
+      } catch (error) {
+        this.error = "Erro ao buscar times.";
         console.error(error);
       }
     },
