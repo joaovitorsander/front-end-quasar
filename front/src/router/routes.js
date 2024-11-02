@@ -37,7 +37,7 @@ const routes = [
       },
       {
         path: "partida", // Partida page
-        component: () => import("pages/PartidaPage.vue"),
+        component: () => import("pages/PartidasPage.vue"),
       },
       {
         path: "time", // Partida page
