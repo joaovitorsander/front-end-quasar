@@ -29,7 +29,7 @@ const routes = [
       },
       {
         path: "estat", // Estat page
-        component: () => import("pages/EstatPage.vue"),
+        component: () => import("pages/EstatsJogadorPage.vue"),
       },
       {
         path: "jogadores", // Jogadores page
