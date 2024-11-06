@@ -1,85 +1,67 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <!-- Header -->
     <q-header elevated :class="$q.dark.isActive ? 'bg-secondary' : 'bg-black'">
       <q-toolbar>
-        <q-toolbar-title>Valorant</q-toolbar-title>
+        <q-toolbar-title>{{ pageTitle }}</q-toolbar-title>
       </q-toolbar>
     </q-header>
 
-    <!-- Sidebar (Drawer) with mini state and hover -->
-    <q-drawer
-      v-model="leftDrawerOpen"
-      show-if-above
-      :mini="miniState"
-      @mouseenter="miniState = false"
-      @mouseleave="miniState = true"
-      :width="200"
-      :breakpoint="500"
-      bordered
-      class="custom-drawer"
-    >
+    <q-drawer v-model="leftDrawerOpen" show-if-above :mini="miniState" @mouseenter="miniState = false"
+      @mouseleave="miniState = true" :width="200" :breakpoint="500" bordered class="custom-drawer">
       <q-scroll-area class="fit" :horizontal-thumb-style="{ opacity: 0 }">
         <q-list padding>
           <q-item-label header>Menu</q-item-label>
 
-          <q-item clickable v-ripple tag="router-link" to="/listagem">
-            <q-item-section avatar>
-              <q-icon name="list" />
-            </q-item-section>
-            <q-item-section>Listagem</q-item-section>
-          </q-item>
-
-          <q-item clickable v-ripple tag="router-link" to="/">
+          <q-item clickable v-ripple tag="router-link" to="/" :active-class="isActive('/') ? 'text-red' : ''"
+            @click="updateTitle('Dashboard')">
             <q-item-section avatar>
               <q-icon name="dashboard" />
             </q-item-section>
             <q-item-section>Dashboard</q-item-section>
           </q-item>
 
-          <q-item clickable v-ripple tag="router-link" to="/agent">
+          <q-item clickable v-ripple tag="router-link" to="/agent" :active-class="isActive('/agent') ? 'text-red' : ''"
+            @click="updateTitle('Agente')">
             <q-item-section avatar>
               <q-icon name="person" />
             </q-item-section>
             <q-item-section>Agente</q-item-section>
           </q-item>
 
-          <q-item clickable v-ripple tag="router-link" to="/camp">
+          <q-item clickable v-ripple tag="router-link" to="/camp" :active-class="isActive('/camp') ? 'text-red' : ''"
+            @click="updateTitle('Camp')">
             <q-item-section avatar>
               <q-icon name="flag" />
             </q-item-section>
             <q-item-section>Camp</q-item-section>
           </q-item>
 
-          <q-item clickable v-ripple tag="router-link" to="/estat">
-            <q-item-section avatar>
-              <q-icon name="bar_chart" />
-            </q-item-section>
-            <q-item-section>Estat</q-item-section>
-          </q-item>
-
-          <q-item clickable v-ripple tag="router-link" to="/jogadores">
+          <q-item clickable v-ripple tag="router-link" to="/jogadores"
+            :active-class="isActive('/jogadores') ? 'text-red' : ''" @click="updateTitle('Jogadores')">
             <q-item-section avatar>
               <q-icon name="sports_esports" />
             </q-item-section>
             <q-item-section>Jogadores</q-item-section>
           </q-item>
 
-          <q-item clickable v-ripple tag="router-link" to="/maps">
+          <q-item clickable v-ripple tag="router-link" to="/maps" :active-class="isActive('/maps') ? 'text-red' : ''"
+            @click="updateTitle('Mapa')">
             <q-item-section avatar>
               <q-icon name="map" />
             </q-item-section>
             <q-item-section>Mapa</q-item-section>
           </q-item>
 
-          <q-item clickable v-ripple tag="router-link" to="/partida">
+          <q-item clickable v-ripple tag="router-link" to="/partida"
+            :active-class="isActive('/partida') ? 'text-red' : ''" @click="updateTitle('Partida')">
             <q-item-section avatar>
               <q-icon name="event" />
             </q-item-section>
             <q-item-section>Partida</q-item-section>
           </q-item>
 
-          <q-item clickable v-ripple tag="router-link" to="/time">
+          <q-item clickable v-ripple tag="router-link" to="/time" :active-class="isActive('/time') ? 'text-red' : ''"
+            @click="updateTitle('Time')">
             <q-item-section avatar>
               <q-icon name="people" />
             </q-item-section>
@@ -98,17 +80,29 @@
 
 <script setup>
 import { ref } from "vue";
+import { useRoute } from "vue-router";
 
 const leftDrawerOpen = ref(false);
 const miniState = ref(true);
+const pageTitle = ref("Dashboard");
 
-function toggleLeftDrawer() {
-  leftDrawerOpen.value = !leftDrawerOpen.value;
+const route = useRoute();
+
+function updateTitle(title) {
+  pageTitle.value = title;
+}
+
+function isActive(path) {
+  return route.path === path;
 }
 </script>
 
 <style scoped>
 .custom-drawer {
   background-color: #f7f7f7;
+}
+
+.text-red {
+  color: #e74c3c;
 }
 </style>

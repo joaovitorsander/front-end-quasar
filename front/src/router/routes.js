@@ -27,10 +27,10 @@ const routes = [
         path: "camp", // Camp page
         component: () => import("pages/CampPage.vue"),
       },
-      {
-        path: "estat", // Estat page
-        component: () => import("pages/EstatsJogadorPage.vue"),
-      },
+      // {
+      //   path: "estat", // Estat page
+      //   component: () => import("pages/EstatsJogadorPage.vue"),
+      // },
       {
         path: "jogadores", // Jogadores page
         component: () => import("pages/JogadoresTimesPage.vue"),
