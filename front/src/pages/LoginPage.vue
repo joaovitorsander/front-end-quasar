@@ -1,5 +1,5 @@
 <template>
-  <q-page class="q-pa-md">
+  <q-page class="q-pa-md flex flex-center">
     <q-card class="q-pa-md custom-card">
       <q-form @submit.prevent="handleLogin">
         <q-input
@@ -24,6 +24,13 @@
         <div v-if="authStore.error" class="text-negative q-mt-md">
           {{ authStore.error }}
         </div>
+        <q-btn
+          label="Registrar"
+          color="secondary"
+          flat
+          class="full-width q-mt-md"
+          @click="goToRegister"
+        />
       </q-form>
     </q-card>
   </q-page>
@@ -47,11 +54,21 @@ async function handleLogin() {
     router.push("/app/dashboard");
   }
 }
+
+function goToRegister() {
+  router.push("/register");
+}
 </script>
 
 <style scoped>
 .custom-card {
   max-width: 400px;
   margin: auto;
+}
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 </style>

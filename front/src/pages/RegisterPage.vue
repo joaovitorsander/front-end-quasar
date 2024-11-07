@@ -1,5 +1,5 @@
 <template>
-  <q-page class="q-pa-md">
+  <q-page class="q-pa-md flex flex-center">
     <q-card class="q-pa-md custom-card">
       <q-form @submit.prevent="handleRegister">
         <q-input
@@ -37,9 +37,12 @@
 
 <script setup>
 import { ref } from "vue";
+import { useRouter } from "vue-router";
 import { useAuthStore } from "src/stores/authStore";
 
 const authStore = useAuthStore();
+const router = useRouter();
+
 const newUser = ref({
   nome_de_usuario: "",
   nick_usuario: "",
@@ -50,7 +53,7 @@ const newUser = ref({
 async function handleRegister() {
   await authStore.register(newUser.value);
   if (!authStore.error) {
-    // Redirecionar ou exibir mensagem de sucesso após o registro bem-sucedido
+    router.push("/app/dashboard");
   }
 }
 </script>
@@ -59,5 +62,11 @@ async function handleRegister() {
 .custom-card {
   max-width: 400px;
   margin: auto;
+}
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 </style>
