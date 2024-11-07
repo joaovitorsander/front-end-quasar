@@ -1,61 +1,53 @@
 <template>
-  <q-page class="q-pa-md flex flex-center">
-    <q-card class="q-pa-lg" style="max-width: 400px">
-      <q-card-section>
-        <div class="text-h4 text-center">Login</div>
-      </q-card-section>
-
-      <q-card-section>
-        <q-form @submit="handleLogin">
-          <q-input v-model="username" filled label="Usuário" prepend-icon="person"
-            :rules="[val => !!val || 'Usuário é obrigatório']" class="q-mb-md" />
-
-          <q-input v-model="password" type="password" filled label="Senha" prepend-icon="lock"
-            :rules="[val => !!val || 'Senha é obrigatória']" class="q-mb-md" />
-
-          <q-btn label="Entrar" type="submit" color="primary" class="full-width q-mb-sm" />
-        </q-form>
-
-        <div class="text-center">
-          <q-btn flat label="Esqueceu sua senha?" color="secondary" class="q-pa-none" />
+  <q-page class="q-pa-md">
+    <q-card class="q-pa-md custom-card">
+      <q-form @submit.prevent="handleLogin">
+        <q-input
+          v-model="username"
+          label="Nome de Usuário"
+          filled
+          class="q-mb-md"
+        />
+        <q-input
+          v-model="password"
+          type="password"
+          label="Senha"
+          filled
+          class="q-mb-md"
+        />
+        <q-btn
+          type="submit"
+          label="Login"
+          color="primary"
+          class="full-width q-mt-lg"
+        />
+        <div v-if="authStore.error" class="text-negative q-mt-md">
+          {{ authStore.error }}
         </div>
-
-        <q-separator class="q-mt-md q-mb-md" />
-
-        <div class="text-center">
-          <q-btn outline label="Criar Conta" color="primary" @click="goToRegister" />
-        </div>
-      </q-card-section>
+      </q-form>
     </q-card>
   </q-page>
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import { useRouter } from 'vue-router'
+import { ref } from "vue";
+import { useAuthStore } from "src/stores/authStore";
 
-const username = ref('')
-const password = ref('')
-const router = useRouter()
+const authStore = useAuthStore();
+const username = ref("");
+const password = ref("");
 
-const handleLogin = () => {
-  if (!username.value || !password.value) {
-    return
+async function handleLogin() {
+  await authStore.login(username.value, password.value);
+  if (!authStore.error) {
+    // Redirecionar ou exibir mensagem de sucesso após o login bem-sucedido
   }
-  console.log('Login:', username.value, password.value)
-}
-
-const goToRegister = () => {
-  router.push('/register')
 }
 </script>
 
 <style scoped>
-.q-pa-md {
-  background-color: #f5f5f5;
-}
-
-.full-width {
-  width: 100%;
+.custom-card {
+  max-width: 400px;
+  margin: auto;
 }
 </style>
