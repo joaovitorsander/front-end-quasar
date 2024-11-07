@@ -7,6 +7,7 @@
           alt="Logo"
           class="form-image"
         />
+        <h2 class="form-title">VavaChamp</h2>
       </div>
       <q-form @submit.prevent="handleLogin">
         <q-input
@@ -81,6 +82,13 @@ function goToRegister() {
   padding: 30px;
   border-radius: 8px;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.form-title {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #333;
+  margin-top: 10px;
 }
 
 .image-container {

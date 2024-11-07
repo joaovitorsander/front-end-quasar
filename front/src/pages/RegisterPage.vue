@@ -7,6 +7,7 @@
           alt="Logo"
           class="form-image"
         />
+        <h2 class="form-title">VavaChamp</h2>
       </div>
       <q-form @submit.prevent="handleRegister">
         <q-input
@@ -89,6 +90,13 @@ async function handleRegister() {
 .form-image {
   max-width: 150px;
   height: auto;
+}
+
+.form-title {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #333;
+  margin-top: 10px;
 }
 
 .large-input {
