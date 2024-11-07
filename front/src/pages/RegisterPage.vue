@@ -1,31 +1,31 @@
 <template>
-  <q-page class="q-pa-md flex flex-center">
-    <q-card class="q-pa-md custom-card">
+  <q-page class="q-pa-md flex-center">
+    <q-card class="q-pa-lg custom-card">
       <q-form @submit.prevent="handleRegister">
         <q-input
           v-model="newUser.nome_de_usuario"
           label="Nome de Usuário"
           filled
-          class="q-mb-md"
+          class="q-mb-md large-input"
         />
         <q-input
           v-model="newUser.nick_usuario"
           label="Nick"
           filled
-          class="q-mb-md"
+          class="q-mb-md large-input"
         />
         <q-input
           v-model="newUser.senha"
           type="password"
           label="Senha"
           filled
-          class="q-mb-md"
+          class="q-mb-md large-input"
         />
         <q-btn
           type="submit"
           label="Registrar"
           color="primary"
-          class="full-width q-mt-lg"
+          class="full-width q-mt-lg large-btn"
         />
         <div v-if="authStore.error" class="text-negative q-mt-md">
           {{ authStore.error }}
@@ -59,14 +59,26 @@ async function handleRegister() {
 </script>
 
 <style scoped>
-.custom-card {
-  max-width: 400px;
-  margin: auto;
-}
 .flex-center {
   display: flex;
-  justify-content: center;
   align-items: center;
-  height: 100vh;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.custom-card {
+  width: 100%;
+  max-width: 500px;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.large-input {
+  font-size: 1.1em;
+}
+
+.large-btn {
+  font-size: 1.1em;
 }
 </style>
