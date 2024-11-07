@@ -1,51 +1,57 @@
 const routes = [
   {
     path: "/",
-    component: () => import("layouts/MainLayout.vue"),
+    component: () => import("layouts/AuthLayout.vue"),
     children: [
       {
-        path: "", // Default path (Dashboard)
-        component: () => import("pages/DashBoardPage.vue"),
-      },
-      {
-        path: "login", // Login page
+        path: "",
         component: () => import("pages/LoginPage.vue"),
       },
       {
-        path: "register", // Register page
-        component: () => import("pages/RegisterPage.vue"),
+        path: "login",
+        component: () => import("pages/LoginPage.vue"),
       },
       {
-        path: "maps", // Maps page
+        path: "register",
+        component: () => import("pages/RegisterPage.vue"),
+      },
+    ],
+  },
+  {
+    path: "/app",
+    component: () => import("layouts/MainLayout.vue"),
+    children: [
+      {
+        path: "dashboard",
+        component: () => import("pages/DashBoardPage.vue"),
+      },
+      {
+        path: "maps",
         component: () => import("pages/MapsPage.vue"),
       },
       {
-        path: "agent", // Agent page
+        path: "agent",
         component: () => import("pages/AgentsPage.vue"),
       },
       {
-        path: "camp", // Camp page
+        path: "camp",
         component: () => import("pages/CampPage.vue"),
       },
-      // {
-      //   path: "estat", // Estat page
-      //   component: () => import("pages/EstatsJogadorPage.vue"),
-      // },
       {
-        path: "jogadores", // Jogadores page
+        path: "jogadores",
         component: () => import("pages/JogadoresTimesPage.vue"),
       },
       {
-        path: "partida", // Partida page
+        path: "partida",
         component: () => import("pages/PartidasPage.vue"),
       },
       {
-        path: "time", // Partida page
+        path: "time",
         component: () => import("pages/TeamsPage.vue"),
       },
     ],
   },
-  // Fallback for pages not found
+  // Fallback para páginas não encontradas
   {
     path: "/:catchAll(.*)*",
     component: () => import("pages/ErrorNotFound.vue"),

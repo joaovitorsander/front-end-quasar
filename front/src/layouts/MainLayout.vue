@@ -120,9 +120,8 @@
           </q-item>
         </q-list>
 
-        <!-- User Info at the Bottom -->
         <div class="user-info">
-          <q-item clickable>
+          <q-item>
             <q-item-section avatar>
               <q-icon name="person" />
             </q-item-section>
@@ -141,7 +140,6 @@
       </div>
     </q-drawer>
 
-    <!-- Main Content -->
     <q-page-container>
       <router-view />
     </q-page-container>
@@ -149,17 +147,19 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
-import { useRoute } from "vue-router";
+import { ref, computed } from "vue";
+import { useRoute, useRouter } from "vue-router";
+import { useAuthStore } from "src/stores/authStore";
 
 const leftDrawerOpen = ref(false);
 const miniState = ref(true);
 const pageTitle = ref("Dashboard");
 
-// Exemplo de nome de usuário; substitua pelo dado real
-const username = ref("Usuário Logado");
-
 const route = useRoute();
+const router = useRouter();
+const authStore = useAuthStore();
+
+const username = computed(() => authStore.user?.nick_usuario || "Visitante");
 
 function updateTitle(title) {
   pageTitle.value = title;
@@ -170,8 +170,8 @@ function isActive(path) {
 }
 
 function logout() {
-  // Função de logout - substitua pela lógica real
-  console.log("Logout triggered");
+  authStore.logout();
+  router.push("/login");
 }
 </script>
 

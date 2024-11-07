@@ -31,16 +31,20 @@
 
 <script setup>
 import { ref } from "vue";
+import { useRouter } from "vue-router";
 import { useAuthStore } from "src/stores/authStore";
 
 const authStore = useAuthStore();
+const router = useRouter();
+
 const username = ref("");
 const password = ref("");
 
 async function handleLogin() {
   await authStore.login(username.value, password.value);
+
   if (!authStore.error) {
-    // Redirecionar ou exibir mensagem de sucesso após o login bem-sucedido
+    router.push("/app/dashboard");
   }
 }
 </script>
