@@ -1,6 +1,13 @@
 <template>
   <q-page class="q-pa-md flex-center">
     <q-card class="q-pa-lg custom-card">
+      <div class="image-container">
+        <img
+          src="/src/assets/ícone valorant.png"
+          alt="Logo"
+          class="form-image"
+        />
+      </div>
       <q-form @submit.prevent="handleRegister">
         <q-input
           v-model="newUser.nome_de_usuario"
@@ -72,6 +79,16 @@ async function handleRegister() {
   padding: 30px;
   border-radius: 8px;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.image-container {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-image {
+  max-width: 150px;
+  height: auto;
 }
 
 .large-input {
