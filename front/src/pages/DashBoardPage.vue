@@ -57,12 +57,7 @@
           <div class="text-h6 card-title">Agentes mais jogados</div>
           <q-separator class="q-mb-md" />
           <div v-if="mostPlayedAgents.length > 0">
-            <q-item-label
-              v-for="agente in mostPlayedAgents"
-              :key="agente.agente_id"
-            >
-              {{ agente.nome_agente }}
-            </q-item-label>
+            <BarChart :chartData="barChartData" />
           </div>
           <div v-else>Nenhum dado disponível para agentes.</div>
         </q-card-section>
@@ -84,7 +79,7 @@
 <script setup>
 import { onMounted, computed } from "vue";
 import { useDashboardStore } from "src/stores/dashboardStore";
-import ColumnChart from "src/components/charts/ColumnChart.vue";
+import BarChart from "src/components/charts/BarChart.vue";
 import PieChart from "src/components/charts/PieChart.vue";
 
 const store = useDashboardStore();
@@ -105,9 +100,22 @@ const pieChartData = computed(() => {
     labels: mostPlayedMaps.value.map((mapa) => mapa.nome_mapa),
     datasets: [
       {
-        label: "Quantidade de Jogos",
+        label: "",
         backgroundColor: ["#ff6384", "#36a2eb", "#cc65fe", "#ffcd56"],
         data: mostPlayedMaps.value.map((mapa) => mapa.quantidade || mapa.jogos),
+      },
+    ],
+  };
+});
+
+const barChartData = computed(() => {
+  return {
+    labels: mostPlayedAgents.value.map((agente) => agente.nome_agente),
+    datasets: [
+      {
+        label: "",
+        backgroundColor: ["#42a5f5", "#66bb6a", "#ffa726", "#ab47bc"], // Ajuste para cores das colunas
+        data: mostPlayedAgents.value.map((agente) => agente.quantidade),
       },
     ],
   };

@@ -1,8 +1,5 @@
 <template>
-  <q-card-section>
-    <h3 class="chart-title">Agentes mais jogados</h3>
-    <Bar :data="chartData" :options="chartOptions" />
-  </q-card-section>
+  <Bar :data="chartData" :options="chartOptions" />
 </template>
 
 <script setup>
@@ -27,20 +24,18 @@ ChartJS.register(
   LinearScale
 );
 
-const chartData = ref({
-  labels: ["Agente 1", "Agente 2", "Agente 3"],
-  datasets: [
-    {
-      label: "Quantidade de Jogos",
-      backgroundColor: "#3b82f6",
-      data: [10, 20, 30],
-    },
-  ],
+const props = defineProps({
+  chartData: Object,
 });
 
 const chartOptions = {
   responsive: true,
   maintainAspectRatio: false,
+  plugins: {
+    legend: {
+      display: false,
+    },
+  },
 };
 </script>
 
@@ -49,5 +44,12 @@ const chartOptions = {
   text-align: center;
   color: #e74c3c;
   font-weight: bold;
+}
+
+.chart-container {
+  width: 100%;
+  max-width: 300px;
+  height: 300px;
+  margin: auto;
 }
 </style>

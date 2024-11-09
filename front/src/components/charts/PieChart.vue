@@ -16,6 +16,14 @@ const props = defineProps({
 const chartOptions = {
   responsive: true,
   maintainAspectRatio: false,
+  plugins: {
+    legend: {
+      position: "right",
+      labels: {
+        usePointStyle: true,
+      },
+    },
+  },
 };
 </script>
 
