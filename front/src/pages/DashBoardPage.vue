@@ -3,7 +3,10 @@
     <q-spinner v-if="loading" size="30px" color="primary" />
     <div v-if="error" class="text-negative">{{ error }}</div>
 
-    <div class="row q-gutter-md q-justify-center q-mt-md" v-if="!loading && !error">
+    <div
+      class="row q-gutter-md q-justify-center q-mt-md"
+      v-if="!loading && !error"
+    >
       <q-card class="col-4 custom-card">
         <q-card-section>
           <div class="text-h6 card-title">Top 3 Players</div>
@@ -34,19 +37,30 @@
         <q-card-section>
           <div class="text-h6 card-title">Ranking do Campeonato</div>
           <q-separator class="q-mb-md" />
-          <q-table v-if="ranking.length > 0" :rows-per-page-options="[5]" :rows="ranking" :columns="columns"></q-table>
+          <q-table
+            v-if="ranking.length > 0"
+            :rows-per-page-options="[5]"
+            :rows="ranking"
+            :columns="columns"
+          ></q-table>
           <div v-else>Nenhum dado disponível para o ranking.</div>
         </q-card-section>
       </q-card>
     </div>
 
-    <div class="row q-gutter-md q-justify-center q-mt-md" v-if="!loading && !error">
+    <div
+      class="row q-gutter-md q-justify-center q-mt-md"
+      v-if="!loading && !error"
+    >
       <q-card class="col-5 custom-card">
         <q-card-section>
           <div class="text-h6 card-title">Agentes mais jogados</div>
           <q-separator class="q-mb-md" />
           <div v-if="mostPlayedAgents.length > 0">
-            <q-item-label v-for="agente in mostPlayedAgents" :key="agente.agente_id">
+            <q-item-label
+              v-for="agente in mostPlayedAgents"
+              :key="agente.agente_id"
+            >
               {{ agente.nome_agente }}
             </q-item-label>
           </div>
@@ -58,12 +72,9 @@
         <q-card-section>
           <div class="text-h6 card-title">Mapas mais jogados</div>
           <q-separator class="q-mb-md" />
-          <div v-if="mostPlayedMaps.length > 0">
-            <q-item-label v-for="mapa in mostPlayedMaps" :key="mapa.mapa_id">
-              {{ mapa.nome_do_mapa }}
-            </q-item-label>
+          <div class="chart-container">
+            <PieChart :chartData="pieChartData" />
           </div>
-          <div v-else>Nenhum dado disponível para mapas.</div>
         </q-card-section>
       </q-card>
     </div>
@@ -73,6 +84,8 @@
 <script setup>
 import { onMounted, computed } from "vue";
 import { useDashboardStore } from "src/stores/dashboardStore";
+import ColumnChart from "src/components/charts/ColumnChart.vue";
+import PieChart from "src/components/charts/PieChart.vue";
 
 const store = useDashboardStore();
 
@@ -87,6 +100,18 @@ const topTimes = computed(() => store.topTimes);
 const ranking = computed(() => store.ranking);
 const mostPlayedAgents = computed(() => store.mostPlayedAgents);
 const mostPlayedMaps = computed(() => store.mostPlayedMaps);
+const pieChartData = computed(() => {
+  return {
+    labels: mostPlayedMaps.value.map((mapa) => mapa.nome_mapa),
+    datasets: [
+      {
+        label: "Quantidade de Jogos",
+        backgroundColor: ["#ff6384", "#36a2eb", "#cc65fe", "#ffcd56"],
+        data: mostPlayedMaps.value.map((mapa) => mapa.quantidade || mapa.jogos),
+      },
+    ],
+  };
+});
 
 const columns = [
   { name: "rank", label: "Ranking", field: "rank", align: "left" },

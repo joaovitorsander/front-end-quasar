@@ -25,8 +25,8 @@
             clickable
             v-ripple
             tag="router-link"
-            to="/"
-            :active-class="isActive('/') ? 'text-red' : ''"
+            to="/app/dashboard"
+            :active-class="isActive('/app/dashboard') ? 'text-red' : ''"
             @click="updateTitle('Dashboard')"
           >
             <q-item-section avatar>
@@ -39,8 +39,8 @@
             clickable
             v-ripple
             tag="router-link"
-            to="/agent"
-            :active-class="isActive('/agent') ? 'text-red' : ''"
+            to="/app/agent"
+            :active-class="isActive('/app/agent') ? 'text-red' : ''"
             @click="updateTitle('Agente')"
           >
             <q-item-section avatar>
@@ -53,8 +53,8 @@
             clickable
             v-ripple
             tag="router-link"
-            to="/camp"
-            :active-class="isActive('/camp') ? 'text-red' : ''"
+            to="/app/camp"
+            :active-class="isActive('/app/camp') ? 'text-red' : ''"
             @click="updateTitle('Camp')"
           >
             <q-item-section avatar>
@@ -67,8 +67,8 @@
             clickable
             v-ripple
             tag="router-link"
-            to="/jogadores"
-            :active-class="isActive('/jogadores') ? 'text-red' : ''"
+            to="/app/jogadores"
+            :active-class="isActive('/app/jogadores') ? 'text-red' : ''"
             @click="updateTitle('Jogadores')"
           >
             <q-item-section avatar>
@@ -81,8 +81,8 @@
             clickable
             v-ripple
             tag="router-link"
-            to="/maps"
-            :active-class="isActive('/maps') ? 'text-red' : ''"
+            to="/app/maps"
+            :active-class="isActive('/app/maps') ? 'text-red' : ''"
             @click="updateTitle('Mapa')"
           >
             <q-item-section avatar>
@@ -95,8 +95,8 @@
             clickable
             v-ripple
             tag="router-link"
-            to="/partida"
-            :active-class="isActive('/partida') ? 'text-red' : ''"
+            to="/app/partida"
+            :active-class="isActive('/app/partida') ? 'text-red' : ''"
             @click="updateTitle('Partida')"
           >
             <q-item-section avatar>
@@ -109,8 +109,8 @@
             clickable
             v-ripple
             tag="router-link"
-            to="/time"
-            :active-class="isActive('/time') ? 'text-red' : ''"
+            to="/app/time"
+            :active-class="isActive('/app/time') ? 'text-red' : ''"
             @click="updateTitle('Time')"
           >
             <q-item-section avatar>
