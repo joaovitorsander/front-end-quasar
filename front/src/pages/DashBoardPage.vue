@@ -67,9 +67,12 @@
         <q-card-section>
           <div class="text-h6 card-title">Mapas mais jogados</div>
           <q-separator class="q-mb-md" />
-          <div class="chart-container">
-            <PieChart :chartData="pieChartData" />
+          <div v-if="mostPlayedMaps.length > 0">
+            <div class="chart-container">
+              <PieChart :chartData="pieChartData" />
+            </div>
           </div>
+          <div v-else>Nenhum dado disponível para mapas.</div>
         </q-card-section>
       </q-card>
     </div>
@@ -77,7 +80,7 @@
 </template>
 
 <script setup>
-import { onMounted, computed } from "vue";
+import { onMounted, computed, ref } from "vue";
 import { useDashboardStore } from "src/stores/dashboardStore";
 import BarChart from "src/components/charts/BarChart.vue";
 import PieChart from "src/components/charts/PieChart.vue";
@@ -92,9 +95,9 @@ const loading = computed(() => store.loading);
 const error = computed(() => store.error);
 const topPlayers = computed(() => store.topPlayers);
 const topTimes = computed(() => store.topTimes);
-const ranking = computed(() => store.ranking);
 const mostPlayedAgents = computed(() => store.mostPlayedAgents);
 const mostPlayedMaps = computed(() => store.mostPlayedMaps);
+
 const pieChartData = computed(() => {
   return {
     labels: mostPlayedMaps.value.map((mapa) => mapa.nome_mapa),
@@ -114,12 +117,24 @@ const barChartData = computed(() => {
     datasets: [
       {
         label: "",
-        backgroundColor: ["#42a5f5", "#66bb6a", "#ffa726", "#ab47bc"], // Ajuste para cores das colunas
+        backgroundColor: ["#42a5f5", "#66bb6a", "#ffa726", "#ab47bc"],
         data: mostPlayedAgents.value.map((agente) => agente.quantidade),
       },
     ],
   };
 });
+
+// Dados fictícios para o ranking
+const ranking = ref([
+  { rank: 1, time: "Time A", pontos: 100 },
+  { rank: 2, time: "Time B", pontos: 90 },
+  { rank: 3, time: "Time C", pontos: 85 },
+  { rank: 4, time: "Time D", pontos: 80 },
+  { rank: 5, time: "Time E", pontos: 75 },
+  { rank: 6, time: "Time F", pontos: 70 },
+  { rank: 7, time: "Time G", pontos: 65 },
+  { rank: 8, time: "Time H", pontos: 60 },
+]);
 
 const columns = [
   { name: "rank", label: "Ranking", field: "rank", align: "left" },
@@ -145,5 +160,9 @@ const columns = [
   color: #e74c3c;
   font-weight: bold;
   text-align: center;
+}
+
+.chart-container {
+  height: 250px;
 }
 </style>
