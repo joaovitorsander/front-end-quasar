@@ -4,86 +4,42 @@
       <div class="form-section">
         <q-card class="q-pa-md custom-card">
           <q-form @submit.prevent="submitJogadorTime">
-            <q-select
-              filled
-              v-model="timeId"
-              :options="timeOptions"
-              label="Selecione o Time"
-              option-label="nome_time"
-              option-value="id"
-              class="q-mb-md"
-            />
-            <q-input
-              filled
-              v-model="dataAssociacao"
-              mask="##/##/####"
-              label="Data de Associação"
-              class="q-mb-md"
-            >
+            <q-select filled v-model="timeId" :options="timeOptions" label="Selecione o Time" option-label="nome_time"
+              option-value="id" class="q-mb-md" />
+            <q-select filled v-model="jogadorId" :options="usuarioOptions" label="Selecione o Jogador"
+              option-label="nick_usuario" option-value="usuario_id" class="q-mb-md" />
+            <q-input filled v-model="dataAssociacao" mask="##/##/####" label="Data de Associação" class="q-mb-md">
               <template v-slot:append>
                 <q-icon name="event" />
               </template>
             </q-input>
-            <q-input
-              filled
-              v-model="dataDesligamento"
-              mask="##/##/####"
-              label="Data de Desligamento (opcional)"
-              class="q-mb-md"
-            >
+            <q-input filled v-model="dataDesligamento" mask="##/##/####" label="Data de Desligamento (opcional)"
+              class="q-mb-md">
               <template v-slot:append>
                 <q-icon name="event" />
               </template>
             </q-input>
             <q-input filled v-model="funcao" label="Função" class="q-mb-md" />
-            <q-select
-              filled
-              v-model="situacao"
-              :options="situacaoOptions"
-              label="Situação"
-              class="q-mb-md"
-            />
-            <q-option-group
-              v-model="reserva"
-              :options="[
-                { label: 'Sim', value: true },
-                { label: 'Não', value: false },
-              ]"
-              label="Reserva"
-              color="primary"
-              inline
-            />
-            <q-btn
-              type="submit"
-              :label="editMode ? 'ATUALIZAR' : 'SALVAR'"
-              color="primary"
-              class="full-width q-mt-lg save-button"
-            />
-            <q-btn
-              @click="resetForm"
-              label="NOVO"
-              color="secondary"
-              class="full-width q-mt-md save-button"
-            />
+            <q-select filled v-model="situacao" :options="situacaoOptions" label="Situação" class="q-mb-md" />
+            <q-option-group v-model="reserva" :options="[
+              { label: 'Sim', value: true },
+              { label: 'Não', value: false },
+            ]" label="Reserva" color="primary" inline />
+            <q-btn type="submit" :label="editMode ? 'ATUALIZAR' : 'SALVAR'" color="primary"
+              class="full-width q-mt-lg save-button" />
+            <q-btn @click="resetForm" label="NOVO" color="secondary" class="full-width q-mt-md save-button" />
           </q-form>
         </q-card>
       </div>
 
       <div class="list-section">
         <q-card class="q-pa-md custom-card">
-          <q-table
-            v-if="Array.isArray(jogadoresTimes) && jogadoresTimes.length > 0"
-            :rows="jogadoresTimes"
-            :columns="columns"
-            row-key="id"
-            title="Jogadores dos Times Cadastrados"
-            dense
-            flat
-            bordered
-          >
+          <q-table v-if="Array.isArray(jogadoresTimes) && jogadoresTimes.length > 0" :rows="jogadoresTimes"
+            :columns="columns" row-key="id" title="Jogadores dos Times Cadastrados" dense flat bordered>
             <template v-slot:body-cell-jogador="props">
               <q-td :props="props">
-                {{ props.row.id ? props.row.id : "ID não encontrado" }}
+                {{ props.row.jogador_id && props.row.jogador_id.nick_usuario ? props.row.jogador_id.nick_usuario :
+                "Jogador não encontrado" }}
               </q-td>
             </template>
             <template v-slot:body-cell-time="props">
@@ -99,23 +55,12 @@
             <template v-slot:body-cell-reserva="props">
               <q-td :props="props">{{
                 props.row.reserva ? "Sim" : "Não"
-              }}</q-td>
+                }}</q-td>
             </template>
             <template v-slot:body-cell-actions="props">
               <q-td :props="props" align="right">
-                <q-btn
-                  flat
-                  round
-                  icon="edit"
-                  @click="loadJogadorTime(props.row)"
-                />
-                <q-btn
-                  flat
-                  round
-                  icon="delete"
-                  color="negative"
-                  @click="deleteJogadorTime(props.row.id)"
-                />
+                <q-btn flat round icon="edit" @click="loadJogadorTime(props.row)" />
+                <q-btn flat round icon="delete" color="negative" @click="deleteJogadorTime(props.row.id)" />
               </q-td>
             </template>
           </q-table>
@@ -133,6 +78,7 @@ import { useJogadoresTimesStore } from "src/stores/JogadoresTimesStore";
 const store = useJogadoresTimesStore();
 
 const timeId = ref(null);
+const jogadorId = ref(null);
 const dataAssociacao = ref("");
 const dataDesligamento = ref("");
 const funcao = ref("");
@@ -148,20 +94,21 @@ const situacaoOptions = [
 ];
 
 const timeOptions = computed(() => store.times);
+const usuarioOptions = computed(() => store.usuarios);
 
 const columns = [
   {
     name: "jogador",
     label: "Jogador",
     align: "left",
-    field: "jogador_id",
+    field: (row) => row.jogador_id.nick_usuario,
     sortable: true,
   },
   {
     name: "time",
     label: "Time",
     align: "left",
-    field: "time_id",
+    field: (row) => row.time_id.nome_time,
     sortable: true,
   },
   {
@@ -189,7 +136,7 @@ const columns = [
     name: "situacao",
     label: "Situação",
     align: "left",
-    field: "situacao",
+    field: (row) => row.situacao.value,
     sortable: true,
   },
   {
@@ -199,17 +146,24 @@ const columns = [
     field: "reserva",
     sortable: true,
   },
-  { name: "actions", label: "Ações", align: "center", field: "actions" },
+  {
+    name: "actions",
+    label: "Ações",
+    align: "center",
+    field: "actions"
+  },
 ];
 
 onMounted(async () => {
   await store.fetchJogadoresTimes();
   await store.fetchTimes();
+  await store.fetchUsuarios();
 });
 
 async function submitJogadorTime() {
   const jogadorTimeData = {
     time_id: timeId.value,
+    jogador_id: jogadorId.value,
     data_associacao: dataAssociacao.value,
     data_desligamento: dataDesligamento.value,
     funcao: funcao.value,
@@ -227,7 +181,8 @@ async function submitJogadorTime() {
 }
 
 function loadJogadorTime(jogadorTime) {
-  timeId.value = jogadorTime.time_id;
+  timeId.value = jogadorTime.time_id.id;
+  jogadorId.value = jogadorTime.jogador_id.usuario_id;
   dataAssociacao.value = jogadorTime.data_associacao;
   dataDesligamento.value = jogadorTime.data_desligamento;
   funcao.value = jogadorTime.funcao;
@@ -243,6 +198,7 @@ async function deleteJogadorTime(id) {
 
 function resetForm() {
   timeId.value = null;
+  jogadorId.value = null;
   dataAssociacao.value = "";
   dataDesligamento.value = "";
   funcao.value = "";

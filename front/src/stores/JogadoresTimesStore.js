@@ -5,6 +5,7 @@ export const useJogadoresTimesStore = defineStore("JogadoresTimesStore", {
   state: () => ({
     jogadoresTimes: [],
     times: [],
+    usuarios: [],
     error: null,
   }),
   actions: {
@@ -23,6 +24,15 @@ export const useJogadoresTimesStore = defineStore("JogadoresTimesStore", {
         this.times = response.data;
       } catch (error) {
         this.error = "Erro ao buscar times.";
+        console.error(error);
+      }
+    },
+    async fetchUsuarios() {
+      try {
+        const response = await jogadorTimeService.getUsuarios();
+        this.usuarios = response.data;
+      } catch (error) {
+        this.error = "Erro ao buscar usuários.";
         console.error(error);
       }
     },

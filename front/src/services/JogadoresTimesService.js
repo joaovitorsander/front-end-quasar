@@ -7,6 +7,9 @@ export default {
   getTimes() {
     return api.get("/times");
   },
+  getUsuarios() {
+    return api.get("/usuarios");
+  },
   addJogadorTime(jogadorTime) {
     return api.post("/jogadores_times", jogadorTime);
   },
