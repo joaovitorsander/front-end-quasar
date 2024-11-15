@@ -3,10 +3,7 @@
     <q-spinner v-if="loading" size="30px" color="primary" />
     <div v-if="error" class="text-negative">{{ error }}</div>
 
-    <div
-      class="row q-gutter-md q-justify-center q-mt-md"
-      v-if="!loading && !error"
-    >
+    <div class="row q-gutter-md q-justify-center q-mt-md" v-if="!loading && !error">
       <q-card class="col-4 custom-card">
         <q-card-section>
           <div class="text-h6 card-title">Top 3 Players</div>
@@ -37,21 +34,13 @@
         <q-card-section>
           <div class="text-h6 card-title">Ranking do Campeonato</div>
           <q-separator class="q-mb-md" />
-          <q-table
-            v-if="ranking.length > 0"
-            :rows-per-page-options="[5]"
-            :rows="ranking"
-            :columns="columns"
-          ></q-table>
+          <q-table v-if="ranking.length > 0" :rows-per-page-options="[5]" :rows="ranking" :columns="columns"></q-table>
           <div v-else>Nenhum dado disponível para o ranking.</div>
         </q-card-section>
       </q-card>
     </div>
 
-    <div
-      class="row q-gutter-md q-justify-center q-mt-md"
-      v-if="!loading && !error"
-    >
+    <div class="row q-gutter-md q-justify-center q-mt-md" v-if="!loading && !error">
       <q-card class="col-5 custom-card">
         <q-card-section>
           <div class="text-h6 card-title">Agentes mais jogados</div>
@@ -124,16 +113,12 @@ const barChartData = computed(() => {
   };
 });
 
-// Dados fictícios para o ranking
 const ranking = ref([
-  { rank: 1, time: "Time A", pontos: 100 },
-  { rank: 2, time: "Time B", pontos: 90 },
-  { rank: 3, time: "Time C", pontos: 85 },
-  { rank: 4, time: "Time D", pontos: 80 },
-  { rank: 5, time: "Time E", pontos: 75 },
-  { rank: 6, time: "Time F", pontos: 70 },
-  { rank: 7, time: "Time G", pontos: 65 },
-  { rank: 8, time: "Time H", pontos: 60 },
+  { rank: 1, time: "Fnatic", pontos: 100 },
+  { rank: 2, time: "Sentinels", pontos: 90 },
+  { rank: 3, time: "DRX", pontos: 85 },
+  { rank: 4, time: "Team Liquid", pontos: 80 },
+  { rank: 5, time: "LOUD", pontos: 75 },
 ]);
 
 const columns = [

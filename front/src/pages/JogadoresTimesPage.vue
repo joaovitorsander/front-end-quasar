@@ -21,10 +21,13 @@
             </q-input>
             <q-input filled v-model="funcao" label="Função" class="q-mb-md" />
             <q-select filled v-model="situacao" :options="situacaoOptions" label="Situação" class="q-mb-md" />
-            <q-option-group v-model="reserva" :options="[
-              { label: 'Sim', value: true },
-              { label: 'Não', value: false },
-            ]" label="Reserva" color="primary" inline />
+            <div class="reserva-section">
+              <q-item-label class="reserva-caption">Reserva</q-item-label>
+              <q-option-group v-model="reserva" :options="[
+                { label: 'Sim', value: true },
+                { label: 'Não', value: false },
+              ]" color="primary" inline />
+            </div>
             <q-btn type="submit" :label="editMode ? 'ATUALIZAR' : 'SALVAR'" color="primary"
               class="full-width q-mt-lg save-button" />
             <q-btn @click="resetForm" label="NOVO" color="secondary" class="full-width q-mt-md save-button" />
@@ -39,7 +42,7 @@
             <template v-slot:body-cell-jogador="props">
               <q-td :props="props">
                 {{ props.row.jogador_id && props.row.jogador_id.nick_usuario ? props.row.jogador_id.nick_usuario :
-                "Jogador não encontrado" }}
+                  "Jogador não encontrado" }}
               </q-td>
             </template>
             <template v-slot:body-cell-time="props">
@@ -229,6 +232,16 @@ function resetForm() {
 .save-button {
   font-weight: bold;
   font-size: 1.1em;
+}
+
+.reserva-section {
+  margin-bottom: 16px;
+}
+
+.reserva-caption {
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 8px;
 }
 
 .q-mt-lg {
