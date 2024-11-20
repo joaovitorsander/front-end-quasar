@@ -1,9 +1,9 @@
 import { defineStore } from "pinia";
-import agentService from "src/services/agentService";
+import agentService from "src/services/agentsService";
 
 export const useAgentStore = defineStore("agentStore", {
   state: () => ({
-    agentes: [], 
+    agentes: [],
     error: null,
   }),
   actions: {

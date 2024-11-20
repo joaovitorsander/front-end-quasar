@@ -100,7 +100,7 @@
 
 <script setup>
 import { ref, onMounted } from "vue";
-import { useMapStore } from "src/stores/mapStore";
+import { useMapStore } from "src/stores/mapsStore";
 
 const store = useMapStore();
 

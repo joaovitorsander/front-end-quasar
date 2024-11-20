@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import jogadorTimeService from "src/services/JogadoresTimesService";
+import jogadorTimeService from "src/services/playersTeamsService";
 
 export const useJogadoresTimesStore = defineStore("JogadoresTimesStore", {
   state: () => ({

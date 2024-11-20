@@ -26,27 +26,27 @@ const routes = [
         component: () => import("pages/DashBoardPage.vue"),
       },
       {
-        path: "maps",
+        path: "mapas",
         component: () => import("pages/MapsPage.vue"),
       },
       {
-        path: "agent",
+        path: "agentes",
         component: () => import("pages/AgentsPage.vue"),
       },
       {
-        path: "camp",
-        component: () => import("pages/CampPage.vue"),
+        path: "campeonatos",
+        component: () => import("pages/TournamentsPage.vue"),
       },
       {
         path: "jogadores",
-        component: () => import("pages/JogadoresTimesPage.vue"),
+        component: () => import("pages/PlayersTeamsPage.vue"),
       },
       {
-        path: "partida",
-        component: () => import("pages/PartidasPage.vue"),
+        path: "partidas",
+        component: () => import("pages/MatchesPage.vue"),
       },
       {
-        path: "time",
+        path: "times",
         component: () => import("pages/TeamsPage.vue"),
       },
     ],

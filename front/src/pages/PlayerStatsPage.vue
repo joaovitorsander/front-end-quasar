@@ -130,7 +130,7 @@
 
 <script setup>
 import { ref, onMounted, computed } from "vue";
-import { useEstatisticasJogadorStore } from "src/stores/estatsJogadorStore";
+import { useEstatisticasJogadorStore } from "@/stores/playerStatsStore";
 
 const store = useEstatisticasJogadorStore();
 

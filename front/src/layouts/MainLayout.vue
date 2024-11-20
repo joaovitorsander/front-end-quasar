@@ -39,9 +39,9 @@
             clickable
             v-ripple
             tag="router-link"
-            to="/app/agent"
-            :active-class="isActive('/app/agent') ? 'text-red' : ''"
-            @click="updateTitle('Agente')"
+            to="/app/agentes"
+            :active-class="isActive('/app/agentes') ? 'text-red' : ''"
+            @click="updateTitle('Agentes')"
           >
             <q-item-section avatar>
               <q-icon name="person" />
@@ -53,9 +53,9 @@
             clickable
             v-ripple
             tag="router-link"
-            to="/app/camp"
-            :active-class="isActive('/app/camp') ? 'text-red' : ''"
-            @click="updateTitle('Camp')"
+            to="/app/campeonatos"
+            :active-class="isActive('/app/campeonatos') ? 'text-red' : ''"
+            @click="updateTitle('Campeonatos')"
           >
             <q-item-section avatar>
               <q-icon name="flag" />
@@ -81,9 +81,9 @@
             clickable
             v-ripple
             tag="router-link"
-            to="/app/maps"
-            :active-class="isActive('/app/maps') ? 'text-red' : ''"
-            @click="updateTitle('Mapa')"
+            to="/app/mapas"
+            :active-class="isActive('/app/mapas') ? 'text-red' : ''"
+            @click="updateTitle('Mapas')"
           >
             <q-item-section avatar>
               <q-icon name="map" />
@@ -95,9 +95,9 @@
             clickable
             v-ripple
             tag="router-link"
-            to="/app/partida"
-            :active-class="isActive('/app/partida') ? 'text-red' : ''"
-            @click="updateTitle('Partida')"
+            to="/app/partidas"
+            :active-class="isActive('/app/partidas') ? 'text-red' : ''"
+            @click="updateTitle('Partidas')"
           >
             <q-item-section avatar>
               <q-icon name="event" />
@@ -109,9 +109,9 @@
             clickable
             v-ripple
             tag="router-link"
-            to="/app/time"
-            :active-class="isActive('/app/time') ? 'text-red' : ''"
-            @click="updateTitle('Time')"
+            to="/app/times"
+            :active-class="isActive('/app/times') ? 'text-red' : ''"
+            @click="updateTitle('Times')"
           >
             <q-item-section avatar>
               <q-icon name="people" />

@@ -156,7 +156,7 @@
 
 <script setup>
 import { ref, onMounted, computed } from "vue";
-import { usePartidasStore } from "src/stores/partidasStore";
+import { usePartidasStore } from "src/stores/matchesStore";
 
 const store = usePartidasStore();
 
@@ -279,7 +279,7 @@ function loadPartida(partida) {
   timeId1.value = partida.time_id_1;
   timeId2.value = partida.time_id_2;
   duracao.value = partida.duracao;
-  dataDaPartida.value = partida.data_da_partida; // Certifique-se de que a data está no formato yyyy-MM-dd
+  dataDaPartida.value = partida.data_da_partida;
   roundsTime1.value = partida.rounds_time_1;
   roundsTime2.value = partida.rounds_time_2;
   observacao.value = partida.observacao;

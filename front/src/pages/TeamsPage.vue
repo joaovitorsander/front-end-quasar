@@ -92,7 +92,7 @@
 
 <script setup>
 import { ref, onMounted } from "vue";
-import { useTimesStore } from "src/stores/teamStore";
+import { useTimesStore } from "src/stores/teamsStore";
 
 const store = useTimesStore();
 
@@ -171,7 +171,7 @@ function loadTime(time) {
   nome_time.value = time.nome_time;
   sigla_time.value = time.sigla_time;
   observacao.value = time.observacao;
-  data_registro.value = time.data_registro; // Certifique-se de que a data esteja no formato yyyy-MM-dd
+  data_registro.value = time.data_registro;
   currentTeamId.value = time.id;
   editMode.value = true;
 }

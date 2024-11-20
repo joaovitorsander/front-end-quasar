@@ -97,7 +97,7 @@
 
 <script setup>
 import { ref, onMounted } from "vue";
-import { useAgentStore } from "src/stores/agentStore";
+import { useAgentStore } from "src/stores/agentsStore";
 
 const store = useAgentStore();
 

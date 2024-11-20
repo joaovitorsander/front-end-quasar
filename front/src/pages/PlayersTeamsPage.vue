@@ -139,7 +139,7 @@
 
 <script setup>
 import { ref, onMounted, computed } from "vue";
-import { useJogadoresTimesStore } from "src/stores/JogadoresTimesStore";
+import { useJogadoresTimesStore } from "src/stores/playersTeamsStore";
 
 const store = useJogadoresTimesStore();
 

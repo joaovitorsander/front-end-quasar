@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import estatisticasJogadorService from "src/services/estatsJogadorService";
+import estatisticasJogadorService from "@/services/playerStatsService";
 
 export const useEstatisticasJogadorStore = defineStore(
   "estatisticasJogadorStore",

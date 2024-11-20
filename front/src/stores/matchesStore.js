@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import partidasService from "src/services/partidasService";
+import partidasService from "src/services/matchesService";
 
 export const usePartidasStore = defineStore("PartidasStore", {
   state: () => ({

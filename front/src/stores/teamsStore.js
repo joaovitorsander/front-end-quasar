@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import teamService from "src/services/teamService";
+import teamService from "src/services/teamsService";
 import { ref } from "vue";
 
 export const useTimesStore = defineStore("teamStore", () => {

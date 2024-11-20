@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import mapService from "src/services/mapService";
+import mapService from "src/services/mapsService";
 
 export const useMapStore = defineStore("mapStore", {
   state: () => ({

@@ -112,7 +112,7 @@
 
 <script setup>
 import { ref, computed, onMounted } from "vue";
-import { useCampeonatoStore } from "src/stores/campStore";
+import { useCampeonatoStore } from "src/stores/tournamentsStore";
 
 const store = useCampeonatoStore();
 

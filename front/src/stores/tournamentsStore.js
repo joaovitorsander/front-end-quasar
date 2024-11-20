@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import campService from "src/services/campService";
+import campService from "src/services/tournamentsService";
 
 export const useCampeonatoStore = defineStore("campeonato", {
   state: () => ({
