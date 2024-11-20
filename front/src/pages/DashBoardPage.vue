@@ -3,44 +3,105 @@
     <q-spinner v-if="loading" size="30px" color="primary" />
     <div v-if="error" class="text-negative">{{ error }}</div>
 
-    <div class="row q-gutter-md q-justify-center q-mt-md" v-if="!loading && !error">
-      <q-card class="col-4 custom-card">
+    <div
+      class="row q-gutter-md q-justify-center q-mt-md"
+      v-if="!loading && !error"
+    >
+      <!-- Top 3 Players -->
+      <q-card class="col-5 custom-card">
         <q-card-section>
-          <div class="text-h6 card-title">Top 3 Players</div>
+          <div class="text-h6 card-title">🏆 Top 3 Players</div>
           <q-separator class="q-mb-md" />
           <div v-if="topPlayers.length > 0">
-            <q-item-label v-for="player in topPlayers" :key="player.usuario_id">
-              {{ player.nick_usuario || "Nome não disponível" }}
-            </q-item-label>
+            <div
+              v-for="(player, index) in topPlayers"
+              :key="player.usuario_id"
+              class="player-info"
+            >
+              <q-item>
+                <q-item-section avatar>
+                  <q-avatar :color="getPlayerMedalColor(index)" size="md">
+                    {{ index + 1 }}
+                  </q-avatar>
+                </q-item-section>
+                <q-item-section>
+                  <div class="player-name">{{ player.nick_usuario }}</div>
+                  <div class="player-stats">
+                    🏅 Total de Vitórias: {{ player.wins }}
+                  </div>
+                  <div class="player-stats">⚔️ KDA: {{ player.kda }}</div>
+                  <div class="player-stats">
+                    🏟️ Equipe Atual: {{ player.team }}
+                  </div>
+                  <div class="player-stats">
+                    📅 Última Partida: {{ player.lastMatch }}
+                  </div>
+                </q-item-section>
+              </q-item>
+            </div>
           </div>
           <div v-else>Nenhum dado disponível para jogadores.</div>
         </q-card-section>
       </q-card>
 
-      <q-card class="col-4 custom-card">
+      <!-- Top 3 Times -->
+      <q-card class="col-5 custom-card">
         <q-card-section>
-          <div class="text-h6 card-title">Top 3 Times</div>
+          <div class="text-h6 card-title">🥇 Top 3 Times</div>
           <q-separator class="q-mb-md" />
           <div v-if="topTimes.length > 0">
-            <q-item-label v-for="time in topTimes" :key="time.time_id">
-              {{ time.nome_time || "Nome do time não disponível" }}
-            </q-item-label>
+            <div
+              v-for="(time, index) in topTimes"
+              :key="time.time_id"
+              class="team-info"
+            >
+              <q-item>
+                <q-item-section avatar>
+                  <q-avatar :color="getTeamMedalColor(index)" size="md">
+                    {{ index + 1 }}
+                  </q-avatar>
+                </q-item-section>
+                <q-item-section>
+                  <div class="team-name">{{ time.nome_time }}</div>
+                  <div class="team-stats">
+                    🏆 Partidas Vencidas no Ano: {{ time.wins }}
+                  </div>
+                  <div class="team-stats">
+                    📊 Porcentagem de Vitórias: {{ time.winRate }}%
+                  </div>
+                </q-item-section>
+              </q-item>
+            </div>
           </div>
           <div v-else>Nenhum dado disponível para times.</div>
         </q-card-section>
       </q-card>
+    </div>
 
+    <!-- Gráficos e Ranking -->
+    <div
+      class="row q-gutter-md q-justify-center q-mt-md"
+      v-if="!loading && !error"
+    >
       <q-card class="col-12 custom-card">
         <q-card-section>
           <div class="text-h6 card-title">Ranking do Campeonato</div>
           <q-separator class="q-mb-md" />
-          <q-table v-if="ranking.length > 0" :rows-per-page-options="[5]" :rows="ranking" :columns="columns"></q-table>
+          <q-table
+            v-if="ranking.length > 0"
+            :rows-per-page-options="[5]"
+            :rows="ranking"
+            :columns="columns"
+          ></q-table>
           <div v-else>Nenhum dado disponível para o ranking.</div>
         </q-card-section>
       </q-card>
     </div>
 
-    <div class="row q-gutter-md q-justify-center q-mt-md" v-if="!loading && !error">
+    <div
+      class="row q-gutter-md q-justify-center q-mt-md"
+      v-if="!loading && !error"
+    >
       <q-card class="col-5 custom-card">
         <q-card-section>
           <div class="text-h6 card-title">Agentes mais jogados</div>
@@ -69,6 +130,7 @@
 </template>
 
 <script setup>
+// Os dados fictícios e métodos continuam
 import { onMounted, computed, ref } from "vue";
 import { useDashboardStore } from "src/stores/dashboardStore";
 import BarChart from "src/components/charts/BarChart.vue";
@@ -82,8 +144,54 @@ onMounted(() => {
 
 const loading = computed(() => store.loading);
 const error = computed(() => store.error);
-const topPlayers = computed(() => store.topPlayers);
-const topTimes = computed(() => store.topTimes);
+const topPlayers = ref([
+  {
+    usuario_id: 1,
+    nick_usuario: "Vinix",
+    wins: 25,
+    kda: "3.5",
+    team: "Fnatic",
+    lastMatch: "2024-11-18",
+  },
+  {
+    usuario_id: 2,
+    nick_usuario: "Carool",
+    wins: 18,
+    kda: "2.9",
+    team: "Sentinels",
+    lastMatch: "2024-11-15",
+  },
+  {
+    usuario_id: 3,
+    nick_usuario: "teste1",
+    wins: 12,
+    kda: "2.1",
+    team: "LOUD",
+    lastMatch: "2024-11-10",
+  },
+]);
+
+const topTimes = ref([
+  {
+    time_id: 1,
+    nome_time: "Fnatic",
+    wins: 45,
+    winRate: 80,
+  },
+  {
+    time_id: 2,
+    nome_time: "Sentinels",
+    wins: 40,
+    winRate: 75,
+  },
+  {
+    time_id: 3,
+    nome_time: "LOUD",
+    wins: 35,
+    winRate: 70,
+  },
+]);
+
 const mostPlayedAgents = computed(() => store.mostPlayedAgents);
 const mostPlayedMaps = computed(() => store.mostPlayedMaps);
 
@@ -126,19 +234,34 @@ const columns = [
   { name: "time", label: "Time", field: "time", align: "left" },
   { name: "pontos", label: "Pontos", field: "pontos", align: "left" },
 ];
+
+const getPlayerMedalColor = (index) => {
+  if (index === 0) return "gold";
+  if (index === 1) return "silver";
+  if (index === 2) return "bronze";
+  return "grey";
+};
+
+const getTeamMedalColor = (index) => {
+  if (index === 0) return "gold";
+  if (index === 1) return "silver";
+  if (index === 2) return "bronze";
+  return "grey";
+};
 </script>
 
 <style scoped>
-.custom-page {
-  background-color: #f0f0f0;
-}
-
 .custom-card {
   background-color: #ffffff;
   border-radius: 12px;
   padding: 20px;
-  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
   margin: 15px;
+  transition: box-shadow 0.3s ease;
+}
+
+.custom-card:hover {
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
 }
 
 .card-title {
@@ -147,7 +270,27 @@ const columns = [
   text-align: center;
 }
 
-.chart-container {
-  height: 250px;
+.player-info,
+.team-info {
+  margin-bottom: 15px;
+}
+
+.player-name,
+.team-name {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.player-stats,
+.team-stats {
+  font-size: 14px;
+  color: #555;
+  margin-left: 30px;
+}
+
+.q-avatar {
+  font-size: 14px;
+  color: white;
+  font-weight: bold;
 }
 </style>
