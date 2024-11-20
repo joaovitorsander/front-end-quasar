@@ -44,14 +44,11 @@
             <q-input
               filled
               v-model="dataDaPartida"
-              mask="##/##/####"
+              type="date"
               label="Data da Partida"
+              outlined
               class="q-mb-md"
-            >
-              <template v-slot:append>
-                <q-icon name="event" />
-              </template>
-            </q-input>
+            />
             <q-input
               filled
               v-model="roundsTime1"
@@ -282,7 +279,7 @@ function loadPartida(partida) {
   timeId1.value = partida.time_id_1;
   timeId2.value = partida.time_id_2;
   duracao.value = partida.duracao;
-  dataDaPartida.value = partida.data_da_partida;
+  dataDaPartida.value = partida.data_da_partida; // Certifique-se de que a data está no formato yyyy-MM-dd
   roundsTime1.value = partida.rounds_time_1;
   roundsTime2.value = partida.rounds_time_2;
   observacao.value = partida.observacao;
