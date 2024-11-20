@@ -194,6 +194,11 @@ function loadAgent(agent) {
 
 async function deleteAgent(id) {
   await store.deleteAgent(id);
+
+  if (currentAgentId.value === id) {
+    resetForm();
+  }
+
   await reloadAgents();
 }
 

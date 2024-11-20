@@ -223,8 +223,18 @@ function loadCampeonato(camp) {
   editMode.value = true;
 }
 
-function deleteCampeonato(campId) {
-  store.deleteCampeonato(campId);
+async function reloadCampeonatos() {
+  await store.fetchCampeonatos();
+}
+
+async function deleteCampeonato(campId) {
+  await store.deleteCampeonato(campId);
+
+  if (currentCampId.value === campId) {
+    resetForm();
+  }
+
+  await reloadCampeonatos();
 }
 
 function resetForm() {

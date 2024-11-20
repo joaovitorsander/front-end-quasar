@@ -178,6 +178,11 @@ function loadTime(time) {
 
 async function deleteTime(id) {
   await store.deleteTime(id);
+
+  if (currentTeamId.value === id) {
+    resetForm();
+  }
+
   await reloadTimes();
 }
 

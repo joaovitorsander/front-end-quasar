@@ -273,6 +273,10 @@ async function submitPartida() {
   resetForm();
 }
 
+async function reloadPartidas() {
+  await store.fetchPartidas();
+}
+
 function loadPartida(partida) {
   mapaId.value = partida.mapa_id;
   campId.value = partida.camp_id;
@@ -289,6 +293,12 @@ function loadPartida(partida) {
 
 async function deletePartida(id) {
   await store.deletePartida(id);
+
+  if (currentPartidaId.value === id) {
+    resetForm();
+  }
+
+  await reloadPartidas();
 }
 
 function resetForm() {

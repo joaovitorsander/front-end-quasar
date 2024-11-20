@@ -186,6 +186,11 @@ function loadMap(map) {
 
 async function deleteMap(id) {
   await store.deleteMap(id);
+
+  if (currentMapId.value === id) {
+    resetForm();
+  }
+
   await reloadMaps();
 }
 
