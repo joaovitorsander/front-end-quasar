@@ -13,15 +13,17 @@
               option-value="id"
               class="q-mb-md"
             />
+
             <q-select
               filled
               v-model="jogadorId"
               :options="usuarioOptions"
               label="Selecione o Jogador"
               option-label="nick_usuario"
-              option-value="usuario_id"
+              option-value="id"
               class="q-mb-md"
             />
+
             <q-input
               filled
               v-model="dataAssociacao"
@@ -165,14 +167,14 @@ const columns = [
     name: "jogador",
     label: "Jogador",
     align: "left",
-    field: (row) => row.jogador_id.nick_usuario,
+    field: (row) => row.jogador_id?.nick_usuario,
     sortable: true,
   },
   {
     name: "time",
     label: "Time",
     align: "left",
-    field: (row) => row.time_id.nome_time,
+    field: (row) => row.time_id?.nome_time,
     sortable: true,
   },
   {
@@ -245,12 +247,12 @@ async function submitJogadorTime() {
 }
 
 function loadJogadorTime(jogadorTime) {
-  timeId.value = jogadorTime.time_id.id;
-  jogadorId.value = jogadorTime.jogador_id.usuario_id;
-  dataAssociacao.value = jogadorTime.data_associacao; // Certifique-se de que a data esteja no formato yyyy-MM-dd
-  dataDesligamento.value = jogadorTime.data_desligamento; // Certifique-se de que a data esteja no formato yyyy-MM-dd
+  timeId.value = jogadorTime.time_id;
+  jogadorId.value = jogadorTime.jogador_id;
+  dataAssociacao.value = jogadorTime.data_associacao;
+  dataDesligamento.value = jogadorTime.data_desligamento;
   funcao.value = jogadorTime.funcao;
-  situacao.value = jogadorTime.situacao;
+  situacao.value = jogadorTime.situacao?.value;
   reserva.value = jogadorTime.reserva;
   currentJogadorTimeId.value = jogadorTime.id;
   editMode.value = true;
