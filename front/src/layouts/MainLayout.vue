@@ -46,7 +46,7 @@
             <q-item-section avatar>
               <q-icon name="person" />
             </q-item-section>
-            <q-item-section>Agente</q-item-section>
+            <q-item-section>Agentes</q-item-section>
           </q-item>
 
           <q-item
@@ -60,7 +60,7 @@
             <q-item-section avatar>
               <q-icon name="flag" />
             </q-item-section>
-            <q-item-section>Camp</q-item-section>
+            <q-item-section>Campeonatos</q-item-section>
           </q-item>
 
           <q-item
@@ -88,7 +88,7 @@
             <q-item-section avatar>
               <q-icon name="map" />
             </q-item-section>
-            <q-item-section>Mapa</q-item-section>
+            <q-item-section>Mapas</q-item-section>
           </q-item>
 
           <q-item
@@ -102,7 +102,7 @@
             <q-item-section avatar>
               <q-icon name="event" />
             </q-item-section>
-            <q-item-section>Partida</q-item-section>
+            <q-item-section>Partidas</q-item-section>
           </q-item>
 
           <q-item
@@ -116,7 +116,7 @@
             <q-item-section avatar>
               <q-icon name="people" />
             </q-item-section>
-            <q-item-section>Time</q-item-section>
+            <q-item-section>Times</q-item-section>
           </q-item>
         </q-list>
 
