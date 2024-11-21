@@ -16,31 +16,27 @@
             <div
               v-for="(player, index) in topPlayers"
               :key="player.usuario_id"
-              class="player-info"
+              class="team-card"
             >
-              <q-item>
-                <q-item-section avatar>
-                  <q-avatar :color="getPlayerMedalColor(index)" size="md">
-                    {{ index + 1 }}
-                  </q-avatar>
-                </q-item-section>
-                <q-item-section>
-                  <div class="player-name">{{ player.nick_usuario }}</div>
-                  <div class="player-stats">
-                    🏅 Total de Vitórias: {{ player.wins }}
-                  </div>
-                  <div class="player-stats">⚔️ KDA: {{ player.kda }}</div>
-                  <div class="player-stats">
-                    🏟️ Equipe Atual: {{ player.team }}
-                  </div>
-                  <div class="player-stats">
-                    📅 Última Partida: {{ player.lastMatch }}
-                  </div>
-                </q-item-section>
-              </q-item>
+              <div class="team-header">
+                <q-avatar :color="getPlayerMedalColor(index)" size="md">{{
+                  index + 1
+                }}</q-avatar>
+                <div class="team-name">{{ player.nick_usuario }}</div>
+              </div>
+              <div class="team-info">
+                <div>🏅 <span>Total de Vitórias:</span> {{ player.wins }}</div>
+                <div>⚔️ <span>KDA:</span> {{ player.kda }}</div>
+                <div>🏟️ <span>Equipe Atual:</span> {{ player.team }}</div>
+                <div>
+                  📅 <span>Última Partida:</span> {{ player.lastMatch }}
+                </div>
+              </div>
             </div>
           </div>
-          <div v-else>Nenhum dado disponível para jogadores.</div>
+          <div v-else class="no-data">
+            Nenhum dado disponível para jogadores.
+          </div>
         </q-card-section>
       </q-card>
 
@@ -53,24 +49,23 @@
             <div
               v-for="(time, index) in topTimes"
               :key="time.time_id"
-              class="team-info"
+              class="team-card"
             >
-              <q-item>
-                <q-item-section avatar>
-                  <q-avatar :color="getTeamMedalColor(index)" size="md">
-                    {{ index + 1 }}
-                  </q-avatar>
-                </q-item-section>
-                <q-item-section>
-                  <div class="team-name">{{ time.nome_time }}</div>
-                  <div class="team-stats">
-                    🏆 Partidas Vencidas no Ano: {{ time.wins }}
-                  </div>
-                  <div class="team-stats">
-                    📊 Porcentagem de Vitórias: {{ time.winRate }}%
-                  </div>
-                </q-item-section>
-              </q-item>
+              <div class="team-header">
+                <q-avatar :color="getTeamMedalColor(index)" size="md">
+                  {{ index + 1 }}
+                </q-avatar>
+                <div class="team-name">{{ time.nome_time }}</div>
+              </div>
+              <q-separator />
+              <div class="team-info">
+                <div>
+                  🏆 Partidas Vencidas no Ano: <span>{{ time.wins }}</span>
+                </div>
+                <div>
+                  📊 Porcentagem de Vitórias: <span>{{ time.winRate }}%</span>
+                </div>
+              </div>
             </div>
           </div>
           <div v-else>Nenhum dado disponível para times.</div>
@@ -163,7 +158,7 @@ const topPlayers = ref([
   },
   {
     usuario_id: 3,
-    nick_usuario: "teste1",
+    nick_usuario: "joaodagios",
     wins: 12,
     kda: "2.1",
     team: "LOUD",
@@ -255,13 +250,14 @@ const getTeamMedalColor = (index) => {
   background-color: #ffffff;
   border-radius: 12px;
   padding: 20px;
-  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
   margin: 15px;
-  transition: box-shadow 0.3s ease;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
 .custom-card:hover {
-  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+  transform: scale(1.02);
 }
 
 .card-title {
@@ -270,27 +266,49 @@ const getTeamMedalColor = (index) => {
   text-align: center;
 }
 
-.player-info,
-.team-info {
-  margin-bottom: 15px;
+/* Aplicando o mesmo estilo do card de times para jogadores */
+.team-card {
+  background: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 10px;
 }
 
-.player-name,
-.team-name {
-  font-size: 16px;
+.team-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.team-header .team-name {
+  margin-left: 15px;
   font-weight: bold;
+  font-size: 16px;
+  color: #333;
 }
 
-.player-stats,
-.team-stats {
-  font-size: 14px;
-  color: #555;
-  margin-left: 30px;
+.team-info div {
+  display: flex;
+  align-items: center;
+  margin: 5px 0;
+}
+
+.team-info span {
+  font-weight: bold;
+  margin-left: 5px;
 }
 
 .q-avatar {
   font-size: 14px;
   color: white;
   font-weight: bold;
+}
+
+.no-data {
+  text-align: center;
+  font-size: 14px;
+  color: #888;
+  margin-top: 15px;
 }
 </style>
